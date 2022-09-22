@@ -1,19 +1,12 @@
 const express = require('express');
 const app = express();
+const connectDB = require('./config/database')
 const cors = require('cors')
-const MongoClient = require('mongodb').MongoClient;
-const mongoose = require('mongoose');
 const pusher = require('./routes/pusher')
-const PORT = 8000;
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './config/.env' });
 
-let dbConnectionStr = process.env.DB_STRING;
-mongoose.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        console.log('Connected To Database');
-    })
-    .catch(error => console.error(error));
-
+connectDB();
+  
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +14,7 @@ app.use(express.json());
 app.use(cors())
 
 
-//routes
+//Routes
 app.use('/submitWO', pusher);
 app.use('/', require('./routes/index'));
 app.use('/workOrders', require('./routes/workOrders'));
@@ -30,8 +23,8 @@ app.use('/account', require('./routes/account'));
 app.use('/create', require('./routes/create'));
 app.use('/team', require('./routes/team'));
 
-app.listen(process.env.PORT || PORT, (req, res) => {
-    console.log(`Running server on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Running server on port ${process.env.PORT}`);
 });
 
 

@@ -1,4 +1,3 @@
-let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 let RELOAD = false,
     WORK_ORDER_NUM,
     RESPOND = false,
@@ -11,11 +10,12 @@ document.querySelector('.close').addEventListener('click', closeWorkOrder);
 document.querySelector('.delete').addEventListener('click', deleteWorkOder);
 
 //PUSHER
-var pusher = new Pusher('0badd11ed0483edfa1ed', {
+let temp = '0badd11ed0483edfa1ed';
+var pusher = new Pusher(temp, {
     cluster: 'us2'
 });
 
-var channel = pusher.subscribe('my-channel');
+let channel = pusher.subscribe('my-channel');
 channel.bind('my-event', function (data) {
     if (data.reload === true) {
         loadPage(data.woNum)
