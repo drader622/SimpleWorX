@@ -25,6 +25,7 @@ app.use('/team', require('./routes/team'));
 
 app.listen(process.env.PORT, () => {
     console.log(`Running server on port ${process.env.PORT}`);
+    console.log(process.env.DB_STRING)
 });
 
 
