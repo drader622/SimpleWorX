@@ -31,19 +31,19 @@
             <span class="line"></span>
             <span class="line"></span>
             <ul class="navButtons flex">
-               <a href="/" class="darkBackground"><i class="fa-solid fa-house"></i></a>
-               <a href="/account" id="accountInfo" class="accountInfoMain darkBackground"><i class="icon fa-solid fa-user"></i></a>
-               <a href="#" id="moduleInfo" class="moduleInfoMain darkBackground"><i class="icon fa-solid fa-industry"></i></a>
-               <a href="/workOrders" class="workOrdersMain darkBackground"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i></a>
-               <!-- <a href="#" class="pmInfoMain darkBackground"><i class="fa-solid fa-calendar-day"></i></a> -->
-               <a href="#" class="messagingMain darkBackground"><i class="fa-solid fa-comment"></i></a>
-               <a href="/team" class="coworkerInfoMain darkBackground"><i class="fa-solid fa-people-group"></i></a>
+               <a href="/" class="darkMode"><i class="fa-solid fa-house"></i></a>
+               <a href="/account" class="accountInfoMain darkMode"><i class="icon fa-solid fa-user"></i></a>
+               <a href="#" class="moduleInfoMain darkMode"><i class="icon fa-solid fa-industry"></i></a>
+               <a href="/workOrders" class="workOrdersMain darkMode"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i></a>
+               <!-- <a href="#" class="pmInfoMain darkMode"><i class="fa-solid fa-calendar-day"></i></a> -->
+               <a href="#" class="messagingMain darkMode"><i class="fa-solid fa-comment"></i></a>
+               <a href="/team" class="coworkerInfoMain darkMode"><i class="fa-solid fa-people-group"></i></a>
             </ul>
          </div>
       </nav>
 
       <section class="mainContainer">
-         <section class="employee darkBackground flex">
+         <section class="employee darkMode flex">
             <img class="logo" src="/images/default-monochrome.svg" alt="">
             </img>            
             <section class="flex">
@@ -55,7 +55,7 @@
                <span class="userPic"
                ><img class="headshot" src="/images/headshot.png" alt=""
                /></span>
-               <a href="/user" class="logout">Logout</a>
+               <a href="/user" class="logout darkMode">Logout</a>
             </section>
             <section>
                <p>Dark Mode</p>
@@ -66,8 +66,8 @@
          </section>
          <section class="createContainer flex">
             <section class="sort flex">
-               <h3 class="large darkLettering">Sort Work Orders </h3>
-               <h3 class="small darkLettering">Sort</h3>
+               <h3 class="large">Sort Work Orders </h3>
+               <h3 class="small">Sort</h3>
                <select name="sort" id="sortOptions" class="sortOptions">
                   <option value="recent">Recent</option>
                   <option value="open">Open</option>
@@ -82,7 +82,7 @@
          </section>
          <section class="main">
             <section class="workOrdersMain flex">
-               <section class="title darkBackground flex">
+               <section class="title darkMode flex">
                   <span>WO Number</span>
                   <span>Status</span>
                   <span>Requested Dept</span>
@@ -91,7 +91,7 @@
                </section>
                <ul class="workOrders">
                   <% for(let i= workOrders.length - 1; i > 0; i--) {%>
-                     <li class="request flex">
+                     <li class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
                         <span class="woNum">WO# <%= workOrders[i].workOrderNum %></span>
                         <span><%= workOrders[i].status %></span>
                         <% switch(workOrders[i].reqDept) {
@@ -138,7 +138,7 @@
                   </ul>
                </section>
             </section>
-            <section class="woInfo darkBackground hidden flex">
+            <section class="woInfo darkMode hidden flex">
                <section class="buttons flex">
                   <a href="#" class="respond hidden">Respond</a>
                   <a href="#" class="close hidden">Close</a>

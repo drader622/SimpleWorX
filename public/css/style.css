@@ -80,11 +80,29 @@ a {
    filter: invert(8%) sepia(68%) saturate(581%) hue-rotate(195deg)
       brightness(36%) contrast(141%);
 }
+.htmlDark {
+   background: rgb(25, 25, 25);
+}
+.dark {
+   color: rgb(6, 23, 59) !important;
+   background: rgb(75, 85, 103) !important;
+}
+.request {
+   color: rgb(200, 15, 15) !important;
+}
 .reqRespondedTo {
-   color: rgb(250, 150, 22);
+   color: rgb(250, 150, 22) !important;
 }
 .closed {
-   color: rgb(0, 255, 0);
+   color: rgb(0, 255, 0) !important;
+}
+.sortOptionsDark {
+   color: rgb(75, 85, 103) !important;
+   background: rgb(25, 25, 25) !important;
+   border-color: rgb(75, 85, 103) !important;
+}
+.navLinesDark {
+   background: rgb(6, 23, 59) !important;
 }
 
 /******************************************
@@ -195,6 +213,7 @@ a {
    }
    /* MENU TOGGLE */
    #listToggle {
+      flex-direction: column;
       z-index: 1;
       user-select: none;
       position: relative;
@@ -428,6 +447,8 @@ p {
 .sort h3 {
    font-size: 2rem;
    text-align: right;
+   color: rgb(75, 85, 103);
+   background: none !important;
    padding: 1rem;
 }
 .sortOptions {
@@ -463,6 +484,7 @@ p {
    min-height: 3rem;
    width: 100%;
    font-size: 1.5rem;
+   color: rgb(200, 15, 15);
    list-style: none;
    justify-content: space-between;
    align-items: center;

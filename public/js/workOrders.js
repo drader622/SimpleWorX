@@ -1,13 +1,32 @@
 let RELOAD = false,
-    WORK_ORDER_NUM,
     RESPOND = false,
     CLOSE = false,
-    REQUESTS = new Object;
+    REQUESTS_ARR = new Object,
+    requestLis = document.querySelectorAll('.request'),
+    sortOptionSelector = document.querySelector('#sortOptions'),
+    respondBtn = document.querySelector('.respond'),
+    closeBtn = document.querySelector('.close'),
+    deleteBtn = document.querySelector('.delete'),
+    woInfoContainer = document.querySelector('.woInfo'),
+    woNumSpan = document.querySelector('#woNum'),
+    statusSpan = document.querySelector('#status'),
+    deptSpan = document.querySelector('#department'),
+    locSpan = document.querySelector('#location'),
+    detailSpan = document.querySelector('#detail'),
+    reqDateSpan = document.querySelector('#reqDate'),
+    reqTimeSpan = document.querySelector('#reqTime'),
+    reqBySpan = document.querySelector('#reqBy'),
+    resEmpSpan = document.querySelector('#resEmp'),
+    resDateSpan = document.querySelector('#resDate'),
+    resTimeSpan = document.querySelector('#resTime'),
+    solDetail = document.querySelector('.solDetail'),
+    textArea = document.createElement('textarea');
 
-document.querySelector('#sortOptions').addEventListener('change', sortWOList);
-document.querySelector('.respond').addEventListener('click', respondToWorkOrder);
-document.querySelector('.close').addEventListener('click', closeWorkOrder);
-document.querySelector('.delete').addEventListener('click', deleteWorkOder);
+requestLis.forEach(li => li.addEventListener('click', getWorkOrderInfo));
+sortOptionSelector.addEventListener('change', sortWOList);
+respondBtn.addEventListener('click', respondToWorkOrder);
+closeBtn.addEventListener('click', closeWorkOrder);
+deleteBtn.addEventListener('click', deleteWorkOder);
 
 //PUSHER
 let temp = '0badd11ed0483edfa1ed';
@@ -21,12 +40,11 @@ channel.bind('my-event', function (data) {
         loadPage(data.woNum)
     } else {
         location.reload();
-        document.querySelector('.woInfo').classList.add('hidden');
+        woInfoContainer.classList.add('hidden');
     }
 });
 
 // ONLOAD METHODS
-styleRequestLis();
 getRequests();
 
 // NON SERVER FUNCTIONALITY
@@ -95,24 +113,6 @@ function getTime(woTime) {
     return time;
 }
 function showWoInfo(data) {
-    let woNumSpan = document.querySelector('#woNum'),
-        statusSpan = document.querySelector('#status'),
-        deptSpan = document.querySelector('#department'),
-        locSpan = document.querySelector('#location'),
-        detailSpan = document.querySelector('#detail'),
-        reqDateSpan = document.querySelector('#reqDate'),
-        reqTimeSpan = document.querySelector('#reqTime'),
-        reqBySpan = document.querySelector('#reqBy'),
-        resEmpSpan = document.querySelector('#resEmp'),
-        resDateSpan = document.querySelector('#resDate'),
-        resTimeSpan = document.querySelector('#resTime'),
-        solDetail = document.querySelector('.solDetail'),
-        respondBtn = document.querySelector('.respond'),
-        closeBtn = document.querySelector('.close'),
-        woInfoContainer = document.querySelector('.woInfo'),
-        deleteBtn = document.querySelector('.delete'),
-        textArea = document.createElement('textarea');
-
     let dept = getDepartmentName(data.reqDept),
         machine = getMachineName(data.mach),
         reqTime = '',
@@ -169,45 +169,29 @@ function showWoInfo(data) {
     woInfoContainer.classList.remove('hidden');
 }
 function sortWOList() {
-    let requests = document.querySelectorAll('.request');
-    let sortOption = document.querySelector('#sortOptions').value;
-    requests.forEach(request => {
+    let sortOption = sortOptionSelector.value;
+    requestLis.forEach(request => {
         request.classList.remove('hidden');
     });
     if (sortOption === 'open') {
-        requests.forEach(request => {
+        requestLis.forEach(request => {
             if (request.childNodes[3].innerHTML === 'closed') {
                 request.classList.add('hidden');
             }
         });
     } else if (sortOption === 'closed') {
-        requests.forEach(request => {
+        requestLis.forEach(request => {
             if (request.childNodes[3].innerHTML === 'open') {
                 request.classList.add('hidden');
             }
         });
     } else if (sortOption === 'responded') {
-        requests.forEach(request => {
+        requestLis.forEach(request => {
             if (!(request.childNodes[3].innerHTML === 'open' && request.childNodes[11].innerHTML === 'true')) {
                 request.classList.add('hidden');
             }
         });
     }
-}
-function styleRequestLis() {
-    let requests = document.querySelectorAll('.request');
-    requests.forEach(request => {
-        if (RELOAD === false) {
-            request.addEventListener('click', getWorkOrderInfo);
-        }
-        if (request.childNodes[3].innerHTML === 'closed') {
-            request.classList.add('closed');
-        } else if (request.childNodes[11].innerHTML === 'true') {
-            request.classList.add('reqRespondedTo');
-        } else {
-            request.style.color = 'rgb(200, 15, 15)'
-        }
-    });
 }
 
 // WORKORDER REQUESTS
@@ -243,8 +227,8 @@ async function alertOfWO(woNum) {
     }
 }
 async function closeWorkOrder() {
-    let woNum = document.querySelector('#woNum').innerText,
-        solDetail = document.querySelector('.solDetail textarea').value;
+    let woNum = woNumSpan.innerText,
+        solDetail = textArea.value;
     if (solDetail !== '') {
         try {
             const response = await fetch(`workOrders/closeWorkOrder/${woNum}`, {
@@ -267,7 +251,7 @@ async function closeWorkOrder() {
 
 }
 async function deleteWorkOder() {
-    let woNum = document.querySelector('#woNum').innerText;
+    let woNum = woNumSpan.innerText;
     try {
         const response = await fetch(`workOrders/deleteWorkOrder/${woNum}`, {
             method: 'delete',
@@ -287,7 +271,7 @@ async function getRequests() {
             headers: { 'Content-Type': 'application/json' },
         })
         const data = await response.json()
-        REQUESTS = data;
+        REQUESTS_ARR = data;
     } catch (err) {
         console.log(err)
     }
@@ -306,36 +290,31 @@ async function getWorkOrderInfo(num) {
         const data = await response.json()
         showWoInfo(data);
         if (RELOAD === true) {
-            REQUESTS.forEach(request => {
-                if (request.workOrderNum === num) {
-                    let lis = document.querySelectorAll('.request');
-                    lis.forEach(li => {
-                        let number = li.childNodes[1].innerHTML.slice(4)
-                        if (number === num) {
-                            if (RESPOND === true) {
-                                li.childNodes[11].innerHTML = 'true';
-                                for (let i = 1; i < li.childNodes.length; i += 2) {
-                                    li.childNodes[i].classList.add('reqRespondedTo');
-                                }
-                            }
-                            if (CLOSE === true) {
-                                li.childNodes[3].innerHTML = 'closed';
-                                for (let i = 1; i < li.childNodes.length; i += 2) {
-                                    li.childNodes[i].classList.remove('reqRespondedTo');
-                                    li.childNodes[i].classList.add('closed');
-                                }
-                            }
-                        }
-                    });
+            requestLis.forEach(li => {
+                let number = li.childNodes[1].innerHTML.slice(4);
+                let classStr = '';
+                if (number === num) {
+                    if (RESPOND === true) {
+                        li.childNodes[11].innerHTML = 'true';
+                        classStr = 'reqRespondedTo';
+                    }
+                    if (CLOSE === true) {
+                        li.childNodes[3].innerHTML = 'closed';
+                        classStr = 'closed';
+                    }
+                }
+                for (let i = 1; i < li.childNodes.length; i += 2) {
+                    li.childNodes[i].classList.add(classStr);
                 }
             });
         }
+
     } catch (err) {
         console.log(err)
     }
 }
 async function respondToWorkOrder() {
-    let woNum = document.querySelector('#woNum').innerText,
+    let woNum = woNumSpan.innerText,
         resEmp = document.querySelector('#name').innerText,
         title = document.querySelector('#title').innerText,
         currDate = new Date(),
