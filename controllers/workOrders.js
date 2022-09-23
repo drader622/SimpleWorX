@@ -2,9 +2,10 @@ const WorkOrder = require('../models/workOrder');
 
 module.exports = {
     getIndex: async (req, res) => {
+        console.log(req.user);
         try {
             const workOrders = await WorkOrder.find();
-            res.render('workOrders.ejs', { workOrders: workOrders, });
+            res.render('workOrders.ejs', { workOrders: workOrders, user: req.user });
         } catch (err) {
             console.log(err);
         }
@@ -64,7 +65,7 @@ module.exports = {
             console.log(err);
         }
     },
-    postWorkOrder: async (req, res) => {
+    createWorkOrder: async (req, res) => {
         try {
             let workOrderNum;
             workOrderNum = await setWONum();
@@ -85,7 +86,8 @@ module.exports = {
                 resEmpTitle: '',
                 resDate: '',
                 resTime: '',
-                solutionDetail: ''
+                solutionDetail: '',
+                userId: req.user._id
             })
             res.json(workOrderNum);
         } catch (err) {

@@ -89,7 +89,7 @@ async function postWorkOder() {
             reqDate = `${currDate.getMonth() + 1}/${currDate.getDate()}/${currDate.getFullYear()}`,
             reqTime = `${currDate.getHours()}:${currDate.getMinutes()}`;
 
-        const response = await fetch(`workOrders/postWorkOrder`, {
+        const response = await fetch(`workOrders/createWorkOrder`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

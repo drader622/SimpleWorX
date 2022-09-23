@@ -31,32 +31,36 @@
             <span class="line"></span>
             <span class="line"></span>
             <ul class="navButtons flex">
-               <a href="/" class="darkBackground"><i class="fa-solid fa-house"></i><h2 class="darkLettering">Home</h2></a>
-               <a href="/account" id="accountInfo" class="accountInfoMain darkBackground"><i class="icon fa-solid fa-user"></i><h2 class="darkLettering">Account</h2></a>
-               <a href="#" id="moduleInfo" class="moduleInfoMain darkBackground"><i class="icon fa-solid fa-industry"></i><h2 class="darkLettering">Module Info</h2></a>
-               <a href="/workOrders" class="workOrdersMain darkBackground"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i><h2 class="darkLettering">Work Oders</h2></a>
+               <a href="/" class="darkMode"><i class="fa-solid fa-house"></i><h2>Home</h2></a>
+               <a href="/account" class="accountInfoMain darkMode"><i class="icon fa-solid fa-user"></i><h2>Account</h2></a>
+               <a href="#" id="moduleInfo" class="moduleInfoMain darkMode"><i class="icon fa-solid fa-industry"></i><h2>Module Info</h2></a>
+               <a href="/workOrders" class="workOrdersMain darkMode"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i><h2>Work Oders</h2></a>
                <!-- <a href="#" class="pmInfoMain darkBackground"><i class="fa-solid fa-calendar-day"></i><h2>PM Info</h2></a> -->
-               <a href="#" class="messagingMain darkBackground"><i class="fa-solid fa-comment"></i><h2 class="darkLettering">Messaging</h2></a>
-               <a href="/team" class="darkBackground"><i class="fa-solid fa-people-group"></i><h2 class="darkLettering">Dept Team</h2></a>
+               <a href="#" class="messagingMain darkMode"><i class="fa-solid fa-comment"></i><h2>Messaging</h2></a>
+               <a href="/team" class="darkMode"><i class="fa-solid fa-people-group"></i><h2>Dept Team</h2></a>
             </ul>
          </div>
       </nav>
 
       <section class="mainContainer">
-         <section class="employee darkBackground flex">
+         <section class="employee darkMode flex">
             <img class="logo" src="/images/default-monochrome.svg" alt="">
             </img>            
             <section class="flex">
-               <section class="container flex">
-                  <span id="name">Danielle Rader</span>
-                  <span id="title">Industrial Electrician</span>
-                  <span>Engineering</span>
+               <section class="container flex <%= (user) ? '' : 'hidden'%>">
+                  <% if(user !== undefined) { %>
+                     <span><%= user.firstName %> <%= user.lastName %></span>
+                     <span><%= user.title %></span>
+                     <span><%= user.department %></span>
+                  <% } %>
                </section>
-               <span class="userPic"
-               ><img class="headshot" src="/images/headshot.png" alt=""
-               /></span>
-               <a href="/login" class="logout hidden">Logout</a>
-               <a href="/login" class="logout">Login</a>
+               <% if (user !== undefined) { %>
+                  <span class="userPic"><img class="headshot" src="/images/headshot.png" alt=""/></span>
+                  <a href="/logout" class="logout darkMode">Logout</a>
+               <% } else { %>
+                  <a href="/" class="darkMode"><i class="fa-solid fa-house"></i><h2></h2></a>
+                  <a href="/login" class="logout darkMode">Login</a>
+               <% } %>
             </section>
             <section>
                <p>Dark Mode</p>

@@ -63,6 +63,9 @@ const WorkOrderSchema = new mongoose.Schema({
     solutionDetail: {
         type: String,
     },
+    userId: {
+        type: String,
+    },
 },
     {
         collection: 'request'

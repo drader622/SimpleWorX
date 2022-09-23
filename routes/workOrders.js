@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const workOrderController = require('../controllers/workOrders')
+const workOrderController = require('../controllers/workOrders');
+const { ensureAuth } = require('../middleware/auth');
 
-router.get('/', workOrderController.getIndex);
+router.get('/', ensureAuth, workOrderController.getIndex);
 
 router.get(`/getRequests`, workOrderController.getRequests);
 
@@ -12,7 +13,7 @@ router.put('/respondToWorkOder/:num', workOrderController.respondToWorkOrder);
 
 router.put('/closeWorkOrder/:num', workOrderController.closeWorkOrder);
 
-router.post('/postWorkOrder', workOrderController.postWorkOrder);
+router.post('/createWorkOrder', workOrderController.createWorkOrder);
 
 router.delete('/deleteWorkOrder/:num', workOrderController.deleteWorkOrder);
 

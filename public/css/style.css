@@ -187,7 +187,8 @@ a {
 }
 #index .navButtons h2 {
    font-size: 2rem;
-   color: rgb(132, 149, 180);
+   color: rgb(75, 85, 103);
+   background: none !important;
    padding: 0.5rem 0;
 }
 #index .navButtons a:hover {
