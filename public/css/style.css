@@ -725,7 +725,7 @@ p {
 /******************************************
 /* CREATE.EJS
 /*******************************************/
-.main {
+#createPage .main {
    height: 45rem;
 }
 .optionsContainer {
@@ -953,6 +953,28 @@ p {
 .leads .user {
    margin-bottom: 1rem;
 }
+
+/******************************************
+/* LOGIN.EJS
+/*******************************************/
+#loginPage .main form {
+   width: 20rem;
+   height: 50rem;
+   flex-direction: column;
+   align-items: center;
+}
+#loginPage .main form input {
+   font-size: 2rem;
+}
+
+
+
+
+
+
+
+
+
 /* .disabled {
    background: gray;
    pointer-events: none;

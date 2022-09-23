@@ -23,39 +23,22 @@
          rel="stylesheet"
       />
    </head>
-   <body class="">
-      <nav class="nav flex">
-         <div id="listToggle" class="flex">
-            <input type="checkbox" />
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-            <ul class="navButtons flex">
-               <a href="/" class="darkBackground"><i class="fa-solid fa-house"></i></a>
-               <a href="/account" id="accountInfo" class="accountInfoMain darkBackground"><i class="icon fa-solid fa-user"></i></a>
-               <a href="#" id="moduleInfo" class="moduleInfoMain darkBackground"><i class="icon fa-solid fa-industry"></i></a>
-               <a href="/workOrders" class="workOrdersMain darkBackground"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i></a>
-               <!-- <a href="#" class="pmInfoMain darkBackground"><i class="fa-solid fa-calendar-day"></i></a> -->
-               <a href="#" class="messagingMain darkBackground"><i class="fa-solid fa-comment"></i></a>
-               <a href="/team" class="coworkerInfoMain darkBackground"><i class="fa-solid fa-people-group"></i></a>
-            </ul>
-         </div>
-      </nav>
-
+   <body id="loginPage">
       <section class="mainContainer">
          <section class="employee flex">
             <img class="logo" src="/images/default-monochrome.svg" alt="">
             </img>            
             <section class="flex">
-               <section class="container flex">
-                  <span id="name">Danielle Rader</span>
-                  <span id="title">Industrial Electrician</span>
-                  <span>Engineering</span>
+               <section class="userInfo flex hidden">
+                  <section class="container flex">
+                     <span id="name">Danielle Rader</span>
+                     <span id="title">Industrial Electrician</span>
+                     <span>Engineering</span>
+                  </section>
+                  <span class="userPic"><img class="headshot" src="/images/headshot.png" alt=""/></span>
                </section>
-               <span class="userPic"
-               ><img class="headshot" src="/images/headshot.png" alt=""
-               /></span>
-               <a href="/user" class="logout">Logout</a>
+               <a href="/" class="darkBackground"><i class="fa-solid fa-house"></i></a>
+               <a href="/login" class="logout">Login</a>
             </section>
             <section>
                <p>Dark Mode</p>
@@ -64,8 +47,15 @@
                </label>
             </section>
          </section>
-         <section class="main">
-            <h1>User</h1>
+         <section class="main flex">
+            <section>
+               <form action="/login" method="POST" class="flex">
+                  <input type="email" name="email" placeholder="Email">
+                  <input type="password" name="password" placeholder="Password">
+                  <input type="submit">
+               </form>
+               <a href="/signup">Sign Up</a>
+            </section>
          </section>
       </section>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.1.1-beta/pusher.min.js" integrity="sha512-BPyqC/fsFB0wLkveLSwmEDvb8AHSezUQqCSL2mMieTTPvC4BfjIJIuLVH+4M6cRJFvYiwvdW1DKcVg77g4Mlrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

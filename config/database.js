@@ -3,11 +3,11 @@ require('dotenv').config({ path: './config/.env' });
 
 const connectDB = async () => {
   try {
-    // let temp = 'mongodb+srv://drader2:KodaDash1@cluster0.ugc78.mongodb.net/workOrders?retryWrites=true&w=majority';
-    // temp = process.env.DB_STRING;
     const conn = await mongoose.connect(process.env.DB_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true
     })
 
     console.log(`MongoDB Connected: ${conn.connection.host}`)
