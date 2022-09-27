@@ -1,176 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <meta name="description" content="Your description goes here" />
-      <meta name="keywords" content="one, two, three" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-      <title>SimpleWorx</title>
-
-      <!-- external CSS link -->
-      <link rel="stylesheet" href="css/normalize.css" />
-      <link rel="stylesheet" href="css/style.css" />
-
-      <!-- font awesome -->
-      <script
-         src="https://kit.fontawesome.com/cab467bb3d.js"
-         crossorigin="anonymous"
-      ></script>
-      <!-- fonts -->
-      <link
-         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400;500;700&display=swap"
-         rel="stylesheet"
-      />
-   </head>
-   <body class="team">
-      <nav class="nav flex">
-         <div id="listToggle" class="flex">
-            <input type="checkbox" />
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-            <ul class="navButtons flex">
-               <a href="/" class="darkMode"><i class="fa-solid fa-house"></i></a>
-               <a href="/account" class="accountInfoMain darkMode"><i class="icon fa-solid fa-user"></i></a>
-               <a href="#" class="moduleInfoMain darkMode"><i class="icon fa-solid fa-industry"></i></a>
-               <a href="/workOrders" class="workOrdersMain darkMode"><i id="workOrdersInfo" class="fa-solid fa-clipboard-list"></i></a>
-               <!-- <a href="#" class="pmInfoMain darkMode"><i class="fa-solid fa-calendar-day"></i></a> -->
-               <a href="#" class="messagingMain darkMode"><i class="fa-solid fa-comment"></i></a>
-               <a href="/team" class="coworkerInfoMain darkMode"><i class="fa-solid fa-people-group"></i></a>
-            </ul>
-         </div>
-      </nav>
-
-      <section class="mainContainer">
-         <section class="employee darkMode flex">
-            <img class="logo" src="/images/default-monochrome.svg" alt="">
-            </img>            
+<%- include('partials/header') -%>
+<section class="mainContainer">
+   <section class="main flex">
+      <ul class="organization flex">
+         <li class="flex user">
+            <span class="picContainer"
+               ><img src="\images\headshot.png" alt="" class="pic"
+            /></span>
             <section class="flex">
-               <section class="container flex">
-                  <span><%= user.firstName %> <%= user.lastName %></span>
-                  <span><%= user.title %></span>
-                  <span><%= user.department %></span>
-               </section>
-               <span class="userPic"
-               ><img class="headshot" src="/images/headshot.png" alt=""
-               /></span>
-               <a href="/user" class="logout">Logout</a>
+               <span>Danielle Rader</span>
+               <span>Electronic Technician</span>
             </section>
-            <section>
-               <p>Dark Mode</p>
-               <input type="checkbox" id="switch" class="checkbox" />                 
-               <label for="switch" class="toggle">
-               </label>
-            </section> 
-         </section>
-         <section class="main flex">
-            <ul class="organization flex">
-                <li class="flex user">
-                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                    <section class="flex">
+         </li>
+         <div class="reportsTo flex">
+            <div class="line"></div>
+         </div>
+         <h3 class="reports">Reports To</h3>
+         <li class="flex user">
+            <span class="picContainer"
+               ><img src="\images\headshot.png" alt="" class="pic"
+            /></span>
+            <section class="flex">
+               <span>Danielle Rader</span>
+               <span>Electronic Technician</span>
+            </section>
+         </li>
+         <div class="reportsTo flex">
+            <div class="line"></div>
+         </div>
+         <h3 class="reports">Crew Supervisors</h3>
+         <li class="supervisors flex">
+            <ul class="supervisors flex">
+               <ul class="canDept">
+                  <li class="flex user">
+                     <span class="picContainer"
+                        ><img src="\images\headshot.png" alt="" class="pic"
+                     /></span>
+                     <section class="flex">
                         <span>Danielle Rader</span>
                         <span>Electronic Technician</span>
-                    </section>
-                </li>
-                <div class="reportsTo flex">
-                    <div class="line"></div>
-                </div>
-                <h3 class="reports">Reports To</h3>
-                <li class="flex user">
-                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                    <section class="flex">
+                     </section>
+                  </li>
+                  <div class="reportsTo flex">
+                     <div class="line"></div>
+                  </div>
+                  <h3 class="reports">Dept Leads</h3>
+                  <ul class="leads">
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                  </ul>
+               </ul>
+               <ul class="endDept">
+                  <li class="flex user">
+                     <span class="picContainer"
+                        ><img src="\images\headshot.png" alt="" class="pic"
+                     /></span>
+                     <section class="flex">
                         <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                    </section>
-                </li>
-                <div class="reportsTo flex">
-                    <div class="line"></div>
-                </div>
-                <h3 class="reports">Crew Supervisors</h3>
-                <li class="supervisors flex">
-                    <ul class="supervisors flex">
-                        <ul class="canDept">
-                             <li class="flex user">
-                                <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                <section class="flex">
-                                    <span>Danielle Rader</span>
-                                    <span>Electronic Technician</span>
-                                </section>
-                            </li>
-                            <div class="reportsTo flex">
-                                <div class="line"></div>
-                            </div>
-                            <h3 class="reports">Dept Leads</h3>
-                            <ul class="leads">
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                            </ul>
-                        </ul>
-                        <ul class="endDept">
-                            <li class="flex user">
-                                <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                <section class="flex">
-                                    <span>Danielle Rader</span>
-                                    <span>Engineer - Manufacturing III</span>
-                                </section>
-                            </li>
-                            <div class="reportsTo flex">
-                                <div class="line"></div>
-                            </div>
-                            <h3 class="reports">Dept Leads</h3>
-                            <ul class="leads">
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                                <li class="flex user">
-                                    <span class="picContainer"><img src="\images\headshot.png" alt="" class="pic"></span>
-                                    <section class="flex">
-                                        <span>Danielle Rader</span>
-                                        <span>Electronic Technician</span>
-                                    </section>
-                                </li>
-                            </ul>
-                        </ul>
-                    </ul>
-                </li>
+                        <span>Engineer - Manufacturing III</span>
+                     </section>
+                  </li>
+                  <div class="reportsTo flex">
+                     <div class="line"></div>
+                  </div>
+                  <h3 class="reports">Dept Leads</h3>
+                  <ul class="leads">
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="\images\headshot.png" alt="" class="pic"
+                        /></span>
+                        <section class="flex">
+                           <span>Danielle Rader</span>
+                           <span>Electronic Technician</span>
+                        </section>
+                     </li>
+                  </ul>
+               </ul>
             </ul>
-            <section class="employeeSummary">
-                <h1>Employee summary</h1>
-            </section>
-         </section>
+         </li>
+      </ul>
+      <section class="employeeSummary">
+         <h1>Employee summary</h1>
       </section>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.1.1-beta/pusher.min.js" integrity="sha512-BPyqC/fsFB0wLkveLSwmEDvb8AHSezUQqCSL2mMieTTPvC4BfjIJIuLVH+4M6cRJFvYiwvdW1DKcVg77g4Mlrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <script type="text/javascript" src="js\main.js"></script>
-   </body>
-</html>
+   </section>
+</section>
+<%- include('partials/footer') -%>
