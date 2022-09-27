@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" content="Your description goes here" />
+      <meta name="keywords" content="one, two, three" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>SimpleWorx</title>
+
+      <!-- external CSS link -->
+      <link rel="stylesheet" href="css/normalize.css" />
+      <link rel="stylesheet" href="css/style.css" />
+
+      <!-- font awesome -->
+      <script
+         src="https://kit.fontawesome.com/cab467bb3d.js"
+         crossorigin="anonymous"
+      ></script>
+      <!-- fonts -->
+      <link
+         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400;500;700&display=swap"
+         rel="stylesheet"
+      />
+   </head>
+   <body>
+      <header>
+         <nav class="nav flex">
+            <div id="listToggle" class="flex">
+               <input type="checkbox" />
+               <span class="line"></span>
+               <span class="line"></span>
+               <span class="line"></span>
+               <ul class="navButtons flex">
+                  <a href="/" class="darkMode"
+                     ><i class="fa-solid fa-house"></i
+                  ></a>
+                  <a href="/account" class="accountInfoMain darkMode"
+                     ><i class="icon fa-solid fa-user"></i
+                  ></a>
+                  <a href="#" class="moduleInfoMain darkMode"
+                     ><i class="icon fa-solid fa-industry"></i
+                  ></a>
+                  <a href="/workOrders" class="workOrdersMain darkMode"
+                     ><i
+                        id="workOrdersInfo"
+                        class="fa-solid fa-clipboard-list"
+                     ></i
+                  ></a>
+                  <a href="#" class="messagingMain darkMode"
+                     ><i class="fa-solid fa-comment"></i
+                  ></a>
+                  <a href="/team" class="coworkerInfoMain darkMode"
+                     ><i class="fa-solid fa-people-group"></i
+                  ></a>
+               </ul>
+            </div>
+         </nav>
+        <section class="employee darkMode flex">
+            <img class="logo" src="/images/default-monochrome.svg" alt="">
+            </img>            
+            <section class="flex">
+               <section class="container flex">
+                  <span><%= user.firstName %> <%= user.lastName %></span>
+                  <span><%= user.title %></span>
+                  <span><%= user.department %></span>
+               </section>
+               <span class="userPic"
+               ><img class="headshot" src="/images/headshot.png" alt=""
+               /></span>
+               <a href="/user" class="logout">Logout</a>
+            </section>
+            <section>
+               <p>Dark Mode</p>
+               <input type="checkbox" id="switch" class="checkbox" />                 
+               <label for="switch" class="toggle">
+               </label>
+            </section> 
+         </section>
+      </header>
+   </body>
+</html>
