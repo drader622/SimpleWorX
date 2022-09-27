@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-   <section class="mainContainer">
+   <main>
       <section class="createContainer flex">
          <section class="sort flex">
             <h3 class="large">Sort Work Orders </h3>
@@ -28,7 +28,7 @@
             <ul class="workOrders">
                <% for(let i= workOrders.length - 1; i > 0; i--) {%>
                   <li>
-                     <a href="/woInfo" class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
+                     <a href="/woInfo/<%= workOrders[i]._id %>" class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
                         <span class="woNum">WO# <%= workOrders[i].workOrderNum %></span>
                         <span><%= workOrders[i].status %></span>
                         <% switch(workOrders[i].reqDept) {
@@ -76,7 +76,7 @@
                </ul>
             </section>
          </section>
-         <section class="woInfo darkMode hidden flex">
+         <!-- <section class="woInfo darkMode hidden flex">
             <section class="buttons flex">
                <a href="#" class="respond hidden">Respond</a>
                <a href="#" class="close hidden">Close</a>
@@ -114,7 +114,7 @@
                   </section>
                </section>
             </section>
-         </section>
+         </section> -->
          <section class="accountInfoMain hidden flex">
             <h1>User Profile</h1>
             <section class="flex">

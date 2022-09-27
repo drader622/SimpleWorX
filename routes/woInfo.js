@@ -3,6 +3,6 @@ const router = express.Router();
 const woInfoController = require('../controllers/woInfo');
 const { ensureAuth } = require('../middleware/auth');
 
-router.get('/', woInfoController.getIndex);
+router.get('/:id', ensureAuth, woInfoController.getWorkOrder);
 
 module.exports = router;

@@ -312,7 +312,8 @@ a {
 }
 
 /* MAIN */
-.mainContainer {
+.mainContainer,
+main {
    margin-left: 10rem;
 }
 .employee {
