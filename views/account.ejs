@@ -48,9 +48,9 @@
             </img>            
             <section class="flex">
                <section class="container flex">
-                  <span id="name">Danielle Rader</span>
-                  <span id="title">Industrial Electrician</span>
-                  <span>Engineering</span>
+                  <span><%= user.firstName %> <%= user.lastName %></span>
+                  <span><%= user.title %></span>
+                  <span><%= user.department %></span>
                </section>
                <span class="userPic"
                ><img class="headshot" src="/images/headshot.png" alt=""
@@ -75,15 +75,15 @@
                   <form action="" class="flex formInputs">
                      <section class="flex inputField darkBackground">
                         <h2>First Name</h2>
-                        <input class="userInput darkBackground" type="text" id="firstName" value="Danielle" disabled>
+                        <input class="userInput darkBackground" type="text" id="firstName" value="<%= user.firstName %>" disabled>
                      </section>
                      <section class="flex inputField darkBackground">
                         <h2>Last Name</h2>
-                        <input class="userInput darkBackground" type="text" id="lastName" value="Rader" disabled>
+                        <input class="userInput darkBackground" type="text" id="lastName" value="<%= user.lastName %>" disabled>
                      </section>
                      <section class="flex inputField darkBackground">
                         <h2>Email</h2>
-                        <input class="userInput darkBackground" type="text" id="email" value="drader2@ball.com" disabled>
+                        <input class="userInput darkBackground" type="text" id="email" value="<%= user.email %>" disabled>
                      </section>
                      <section class="flex inputField darkBackground">
                         <h2>Phone Number</h2>
