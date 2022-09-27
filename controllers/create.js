@@ -1,5 +1,5 @@
 module.exports = {
-    getIndex: (req, res) => {
+    getIndex: async (req, res) => {
         res.render('create.ejs', { user: req.user });
     }
 }
