@@ -2,7 +2,6 @@ const WorkOrder = require('../models/workOrder');
 
 module.exports = {
     getIndex: async (req, res) => {
-        console.log(req.user);
         try {
             const workOrders = await WorkOrder.find();
             res.render('workOrders.ejs', { workOrders: workOrders, user: req.user });
@@ -21,11 +20,14 @@ module.exports = {
     getWorkOderInfo: async (req, res) => {
         try {
             const workOrders = await WorkOrder.find();
-            workOrders.forEach(workOrder => {
-                if (workOrder.workOrderNum === req.params.woNum) {
-                    res.json(workOrder);
-                }
-            });
+            console.log(req.params.woNum)
+            res.render('../views/woInfo.ejs', { user: req.user })
+            // const workOrders = await WorkOrder.find();
+            // workOrders.forEach(workOrder => {
+            //     if (workOrder.workOrderNum === req.params.woNum) {
+            //         res.json(workOrder);
+            //     }
+            // });
         } catch (err) {
             console.log(err);
         }

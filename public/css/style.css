@@ -485,6 +485,7 @@ p {
    min-height: 3rem;
    width: 100%;
    font-size: 1.5rem;
+   text-decoration: none;
    color: rgb(200, 15, 15);
    list-style: none;
    justify-content: space-between;

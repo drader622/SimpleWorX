@@ -11,6 +11,7 @@ const cors = require('cors');
 const pusherRoutes = require('./routes/pusher');
 const indexRoutes = require('./routes/index');
 const workOrdersRoutes = require('./routes/workOrders');
+const woInfoRoutes = require('./routes/woInfo')
 const accountRoutes = require('./routes/account');
 const createRoutes = require('./routes/create');
 const teamRoutes = require('./routes/team');
@@ -49,6 +50,7 @@ app.use(flash());
 app.use('/submitWO', pusherRoutes);
 app.use('/', indexRoutes);
 app.use('/workOrders', workOrdersRoutes);
+app.use('/woInfo', woInfoRoutes)
 app.use('/account', accountRoutes);
 app.use('/create', createRoutes);
 app.use('/team', teamRoutes);

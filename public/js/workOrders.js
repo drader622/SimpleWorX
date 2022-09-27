@@ -22,7 +22,7 @@ let RELOAD = false,
     solDetail = document.querySelector('.solDetail'),
     textArea = document.createElement('textarea');
 
-requestLis.forEach(li => li.addEventListener('click', getWorkOrderInfo));
+// requestLis.forEach(li => li.addEventListener('click', getWorkOrderInfo));
 sortOptionSelector.addEventListener('change', sortWOList);
 respondBtn.addEventListener('click', respondToWorkOrder);
 closeBtn.addEventListener('click', closeWorkOrder);
@@ -283,31 +283,32 @@ async function getWorkOrderInfo(num) {
     }
 
     try {
-        const response = await fetch(`workOrders/getWoInfo/${num}`, {
-            method: 'get',
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const data = await response.json()
-        showWoInfo(data);
-        if (RELOAD === true) {
-            requestLis.forEach(li => {
-                let number = li.childNodes[1].innerHTML.slice(4);
-                let classStr = '';
-                if (number === num) {
-                    if (RESPOND === true) {
-                        li.childNodes[11].innerHTML = 'true';
-                        classStr = 'reqRespondedTo';
-                    }
-                    if (CLOSE === true) {
-                        li.childNodes[3].innerHTML = 'closed';
-                        classStr = 'closed';
-                    }
-                }
-                for (let i = 1; i < li.childNodes.length; i += 2) {
-                    li.childNodes[i].classList.add(classStr);
-                }
-            });
-        }
+
+        // const response = await fetch(`workOrders/getWoInfo/${num}`, {
+        //     method: 'get',
+        //     headers: { 'Content-Type': 'application/json' },
+        // })
+        // const data = await response.json()
+        // showWoInfo(data);
+        // if (RELOAD === true) {
+        //     requestLis.forEach(li => {
+        //         let number = li.childNodes[1].innerHTML.slice(4);
+        //         let classStr = '';
+        //         if (number === num) {
+        //             if (RESPOND === true) {
+        //                 li.childNodes[11].innerHTML = 'true';
+        //                 classStr = 'reqRespondedTo';
+        //             }
+        //             if (CLOSE === true) {
+        //                 li.childNodes[3].innerHTML = 'closed';
+        //                 classStr = 'closed';
+        //             }
+        //         }
+        //         for (let i = 1; i < li.childNodes.length; i += 2) {
+        //             li.childNodes[i].classList.add(classStr);
+        //         }
+        //     });
+        // }
 
     } catch (err) {
         console.log(err)
