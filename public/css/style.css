@@ -958,13 +958,15 @@ p {
 /******************************************
 /* LOGIN.EJS
 /*******************************************/
-#loginPage .main form {
+#loginPage .main form,
+#signupPage .main form {
    width: 20rem;
    height: 50rem;
    flex-direction: column;
    align-items: center;
 }
-#loginPage .main form input {
+#loginPage .main form input,
+#signupPage .main form input {
    font-size: 2rem;
 }
 
