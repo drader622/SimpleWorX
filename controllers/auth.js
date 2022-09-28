@@ -1,3 +1,4 @@
+const cloudinary = require("../middleware/cloudinary");
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
@@ -56,7 +57,7 @@ const User = require('../models/User')
     })
   }
   
-  exports.postSignup = (req, res, next) => {
+  exports.postSignup = async (req, res, next) => {
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
@@ -67,6 +68,9 @@ const User = require('../models/User')
       return res.redirect('../signup')
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+
+    // Upload image to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
   
     const user = new User({
       firstName: req.body.firstName,
@@ -75,8 +79,12 @@ const User = require('../models/User')
       department: req.body.department,
       userName: req.body.userName,
       email: req.body.email,
+      image: result.secure_url,
+      cloudinaryId: result.public_id,
       password: req.body.password
     })
+
+    console.log(user);
   
     User.findOne({$or: [
       {email: req.body.email},

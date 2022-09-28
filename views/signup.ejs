@@ -46,7 +46,8 @@
                         <div class="alert alert-danger"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/signup" method="POST">
+                <form action="/signup" enctype="multipart/form-data" method="POST">
+                  <input type="file" id="imageUpload" name="file">
                   <input type="text" name="firstName" placeholder="First Name">
                   <input type="text" name="lastName" placeholder="Last Name">
                   <input type="text" name="title" placeholder="Job Title">
