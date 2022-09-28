@@ -13,15 +13,15 @@
          </section>
          <section class="reqBottom flex">
             <section class="info flex">
-               <div>Requested Dept: <span id="department"></span></div>
-               <div>Requested Location: <span id="location"></span></div>
-               <div>Requested By: <span id="reqBy"></span></div>
-               <div>Requested Day: <span id="reqDate"></span></div>
-               <div>Requested Time: <span id="reqTime"></span></div>
+               <div>Requested Dept: <%= workOrder.reqDept %><span id="department"></span></div>
+               <div>Requested Location: <%= workOrder.reqLocation %><span id="location"></span></div>
+               <div>Requested By: <%= workOrder.reqEmp %><span id="reqBy"></span></div>
+               <div>Requested At: <%= workOrder.reqDate %><span id="reqDate"></span></div>
+               <!-- <div>Requested Time: <%= workOrder.reqLocation %><span id="reqTime"></span></div> -->
             </section>
             <section class="detail flex">
                <h2>Problem Detail</h2>
-               <span id="detail"></span>
+               <span><%= workOrder.probDetail %></span>
             </section>
          </section>
       </section>

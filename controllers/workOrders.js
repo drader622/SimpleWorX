@@ -73,6 +73,7 @@ module.exports = {
             workOrderNum = await setWONum();
             let reqLocation;
             reqLocation = `${req.body.machine} ${(req.body.module).slice(-1)}${req.body.machNum}`;
+            let date = new Date;
             await WorkOrder.create({
                 workOrderNum: workOrderNum,
                 status: 'open',
@@ -82,6 +83,7 @@ module.exports = {
                 reqLocation: reqLocation,
                 reqDept: req.body.shop,
                 probDetail: req.body.probDetail,
+                reqDate: `${date.toDateString()} @ ${date.toLocaleTimeString()}`,
                 userId: req.user._id
             });
             res.redirect('/workOrders');

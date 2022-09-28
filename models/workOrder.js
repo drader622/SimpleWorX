@@ -21,8 +21,7 @@ const WorkOrderSchema = new mongoose.Schema({
         required: true
     },
     reqDate: {
-        type: Date,
-        default: Date.now
+        type: String,
     },
     reqLocation: {
         type: String,
