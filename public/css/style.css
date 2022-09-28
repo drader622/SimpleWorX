@@ -58,7 +58,8 @@ html {
    display: none;
 }
 .disabled {
-   pointer-events: none;
+   cursor: default !important;
+   pointer-events: none !important;
    background: gray !important;
 }
 .small {
@@ -88,6 +89,9 @@ a {
    background: rgb(75, 85, 103) !important;
 }
 .request {
+   color: rgb(200, 15, 15) !important;
+}
+.open {
    color: rgb(200, 15, 15) !important;
 }
 .reqRespondedTo {
@@ -478,7 +482,7 @@ p {
 }
 .workOrders {
    width: 100%;
-   height: 20rem;
+   height: 40rem;
    padding: 0;
    overflow-y: auto;
 }
@@ -577,31 +581,57 @@ p {
    margin-top: 6rem;
    justify-content: space-around;
 }
-.buttons {
-   justify-content: space-evenly;
+.buttonsContainer {
    flex-direction: column;
    margin: 2rem 0;
 }
-.buttons a {
-   width: 11rem;
-   height: 3rem;
+.buttonsContainer a,
+.button {
+   width: 12rem;
+   height: 4rem;
    line-height: 1rem;
    font-size: 1.5rem;
    text-decoration: none;
    text-align: center;
+   cursor: pointer;
    color: black;
+   border: none;
    border-radius: 3rem;
    padding: 1rem;
    margin: 1rem 0;
 }
+.button a {
+   width: 11rem;
+}
 .info {
-   width: 70%;
+   width: 80%;
    flex-direction: column;
+}
+.info span {
+   font-size: 1.5rem;
+   font-weight: normal;
+   color: white;
+   margin-left: .5rem;
+}
+.reqInfo {
+   flex-direction: column;
+}
+.woTop,
+.reqBottom,
+.responded {
+   color: rgb(132, 149, 180);
+   background: rgb(6, 23, 59);
+   border-radius: 1rem;
 }
 .woTop {
    justify-content: space-between;
-   border: 1px solid black;
-   padding: 1rem;
+   color: red;
+   border-radius: 1rem;
+   padding: 1rem 4rem;
+}
+.woTop div,
+.woTop span {
+   font-size: 2rem;
 }
 .requested {
    flex-direction: column;
@@ -614,31 +644,35 @@ p {
 }
 .reqBottom,
 .responded {
-   border: 1px solid black;
-   padding: 1rem;
+   height: 20rem;
+   justify-content: space-around;
+   padding: 2rem 1rem;
 }
-
-#status {
+.reqBottom div,
+.responded div {
+   font-size: 1.6rem;
    font-weight: bold;
 }
-
-.woInfo div {
-   font-size: 1.5rem;
-   font-weight: bold;
+.detail {
+   flex-direction: column;
+   width: 20.5rem;
 }
-.woInfo span {
+.detail textarea {
+   width: 30rem;
    font-size: 1.5rem;
-   font-weight: normal;
-   color: black;
+   text-align: center;
+   color: white;
+   border-radius: 1rem;
+   padding: .5rem;
 }
 
-.buttons .respond {
+.buttonsContainer .respond {
    background: rgb(250, 150, 0);
 }
-.buttons .close {
+.buttonsContainer .close {
    background: rgb(0, 255, 0);
 }
-.buttons .delete {
+.buttonsContainer .delete {
    color: white;
    background: red;
 }

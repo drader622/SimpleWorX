@@ -1,22 +1,63 @@
 <%- include('partials/header') -%>
 <main class="woInfo flex">
-   <section class="buttons flex">
-      <a href="#" class="respond">Respond</a>
-      <a href="#" class="close">Close</a>
-      <a href="#" class="delete">Delete</a>
+   <section class="buttonsContainer flex">
+      <form
+         action="/workOrders/respondToWorkOder/<%= workOrder.id %>?_method=PUT"
+         method="POST"
+      >
+         <button class="respond button <%= (workOrder.respondedTo === true) ? 'disabled' : '' %>" type="submit">Respond</button>
+      </form>
+      <form
+         action="/workOrders/closeWorkOrder/<%= workOrder.id %>?_method=PUT"
+         method="POST"
+      >
+         <button class="close button <%= (workOrder.status === 'closed') ? 'disabled' : '' %>" type="submit">Close</button>
+      </form>
+      <form
+         action="/workOrders/deleteWorkOrder/<%= workOrder.id %>?_method=DELETE"
+         method="POST"
+      >
+         <button class="delete button" type="submit">Delete</button>
+      </form>
    </section>
    <section class="info flex">
       <section class="container requested flex">
-         <section class="woTop flex">
-            <div>WO# <%= workOrder.workOrderNum %></div>
-            <div>Status: <%= workOrder.status %></div>
+         <section
+            class="woTop flex <%= (workOrder.respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrder.status === 'closed') ? 'closed' : '' %>"
+         >
+            <div>
+               WO#
+               <span
+                  class="<%= (workOrder.respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrder.status === 'closed') ? 'closed' : 'open' %>"
+                  ><%= workOrder.workOrderNum %></span
+               >
+            </div>
+            <div>
+               Status:
+               <span
+                  class="<%= (workOrder.respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrder.status === 'closed') ? 'closed' : 'open' %>"
+                  ><%= workOrder.status %></span
+               >
+            </div>
          </section>
          <section class="reqBottom flex">
-            <section class="info flex">
-               <div>Requested Dept: <%= workOrder.reqDept %><span id="department"></span></div>
-               <div>Requested Location: <%= workOrder.reqLocation %><span id="location"></span></div>
-               <div>Requested By: <%= workOrder.reqEmp %><span id="reqBy"></span></div>
-               <div>Requested At: <%= workOrder.reqDate %><span id="reqDate"></span></div>
+            <section class="reqInfo flex">
+               <div>
+                  Requested Dept:
+                  <span><%= workOrder.reqDept %></span>
+               </div>
+               <div>
+                  Requested Location:
+                  <span><%= workOrder.reqLocation %></span>
+               </div>
+               <div>
+                  Requested By:
+                  <span><%= workOrder.reqEmp %></span>
+               </div>
+               <div>
+                  Requested On:
+                  <span><%= workOrder.reqDate %></span>
+               </div>
                <!-- <div>Requested Time: <%= workOrder.reqLocation %><span id="reqTime"></span></div> -->
             </section>
             <section class="detail flex">
@@ -26,14 +67,19 @@
          </section>
       </section>
       <section class="container responded flex">
-         <section class="info flex">
-            <div>Responded By: <span id="resEmp"></span></div>
-            <div>Responded Day: <span id="resDate"></span></div>
-            <div>Responded Time: <span id="resTime"></span></div>
+         <section class="reqInfo flex">
+            <div>
+               Responded By:
+               <span id="resEmp"><%= workOrder.resEmp %></span>
+            </div>
+            <div>
+               Responded On:
+               <span id="resDate"><%= workOrder.resDate %></span>
+            </div>
          </section>
          <section class="detail flex">
             <h2>Solution Detail</h2>
-            <section class="solDetail"></section>
+            <textarea name="" id="" cols="30" rows="10" class="<%= (workOrder.status === 'closed') ? 'disabled' : '' %>"><%= workOrder.solutionDetail %></textarea>
          </section>
       </section>
    </section>

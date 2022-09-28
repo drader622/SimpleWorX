@@ -9,12 +9,12 @@ router.get(`/getRequests`, workOrderController.getRequests);
 
 router.get('/getWoInfo/:woNum', workOrderController.getWorkOderInfo);
 
-router.put('/respondToWorkOder/:num', workOrderController.respondToWorkOrder);
+router.put('/respondToWorkOder/:id', workOrderController.respondToWorkOrder);
 
-router.put('/closeWorkOrder/:num', workOrderController.closeWorkOrder);
+router.put('/closeWorkOrder/:id', workOrderController.closeWorkOrder);
 
 router.post('/createWorkOrder', workOrderController.createWorkOrder);
 
-router.delete('/deleteWorkOrder/:num', workOrderController.deleteWorkOrder);
+router.delete('/deleteWorkOrder/:id', workOrderController.deleteWorkOrder);
 
 module.exports = router;

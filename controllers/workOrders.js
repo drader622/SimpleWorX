@@ -20,40 +20,34 @@ module.exports = {
     getWorkOderInfo: async (req, res) => {
         try {
             const workOrders = await WorkOrder.find();
-            console.log(req.params.woNum)
             res.render('../views/woInfo.ejs', { user: req.user })
-            // const workOrders = await WorkOrder.find();
-            // workOrders.forEach(workOrder => {
-            //     if (workOrder.workOrderNum === req.params.woNum) {
-            //         res.json(workOrder);
-            //     }
-            // });
         } catch (err) {
             console.log(err);
         }
     },
     respondToWorkOrder: async (req, res) => {
         try {
-            await WorkOrder.updateOne({ workOrderNum: req.params.num }, {
+            console.log(req.user)
+            let date = new Date;
+            await WorkOrder.updateOne({ _id: req.params.id }, {
                 $set: {
                     respondedTo: true,
-                    resEmp: req.body.resEmp,
-                    resEmpTitle: req.body.resEmpTitle,
-                    resDate: req.body.resDate,
-                    resTime: req.body.resTime
+                    resEmp: `${req.user.firstName} ${req.user.lastName}`,
+                    resEmpTitle: req.user.title,
+                    resDate:  `${date.toDateString()} @ ${date.toLocaleTimeString()}`,
                 }
             }, {
                 sort: { _id: -1 },
                 upsert: true
             });
-            res.json('')
+            res.redirect(`/woInfo/${req.params.id}`);
         } catch (err) {
             console.log(err);
         }
     },
     closeWorkOrder: async (req, res) => {
         try {
-            await WorkOrder.updateOne({ workOrderNum: req.params.num }, {
+            await WorkOrder.updateOne({ _id: req.params.id }, {
                 $set: {
                     status: 'closed',
                     solutionDetail: req.body.solDetail
@@ -62,17 +56,16 @@ module.exports = {
                 sort: { _id: -1 },
                 upsert: true
             });
-            res.json('');
+            res.redirect(`/woInfo/${req.params.id}`);
         } catch (err) {
             console.log(err);
         }
     },
     createWorkOrder: async (req, res) => {
         try {
-            let workOrderNum;
-            workOrderNum = await setWONum();
-            let reqLocation;
-            reqLocation = `${req.body.machine} ${(req.body.module).slice(-1)}${req.body.machNum}`;
+            let workOrderNum = await setWONum();
+        
+            let reqLocation = `${req.body.machine} ${(req.body.module).slice(-1)}${req.body.machNum}`;
             let date = new Date;
             await WorkOrder.create({
                 workOrderNum: workOrderNum,
@@ -93,8 +86,11 @@ module.exports = {
     },
     deleteWorkOrder: async (req, res) => {
         try {
-            await WorkOrder.findOneAndDelete({ workOrderNum: req.params.num });
-            res.json('')
+            // Delete post from db
+            await WorkOrder.deleteOne({ _id: req.params.id });
+            console.log("Deleted Post");
+
+            res.redirect('/workOrders');
         } catch (err) {
             console.log(err);
         }
