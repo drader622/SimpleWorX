@@ -77,37 +77,38 @@ async function alertOfWO() {
 }
 
 async function postWorkOder() {
-    try {
-        let reqEmp = document.querySelector('#name').innerText,
-            reqEmpTitle = document.querySelector('#title').innerText,
-            mod = document.querySelector('#mod').value,
-            mach = document.querySelector('#mach').value,
-            machNum = document.querySelector('#machNum').value,
-            reqDept = document.querySelector('#reqDept').value,
-            probDetail = document.querySelector('#probDetail').value,
-            currDate = new Date(),
-            reqDate = `${currDate.getMonth() + 1}/${currDate.getDate()}/${currDate.getFullYear()}`,
-            reqTime = `${currDate.getHours()}:${currDate.getMinutes()}`;
+    // try {
+    //     // console.log('success')
+    //     let reqEmp = document.querySelector('#name').innerText,
+    //         reqEmpTitle = document.querySelector('#title').innerText,
+    //         mod = document.querySelector('#mod').value,
+    //         mach = document.querySelector('#mach').value,
+    //         machNum = document.querySelector('#machNum').value,
+    //         reqDept = document.querySelector('#reqDept').value,
+    //         probDetail = document.querySelector('#probDetail').value,
+    //         currDate = new Date(),
+    //         reqDate = `${currDate.getMonth() + 1}/${currDate.getDate()}/${currDate.getFullYear()}`,
+    //         reqTime = `${currDate.getHours()}:${currDate.getMinutes()}`;
 
-        const response = await fetch(`workOrders/createWorkOrder`, {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                'reqEmp': reqEmp,
-                'reqEmpTitle': reqEmpTitle,
-                'reqDate': reqDate,
-                'reqTime': reqTime,
-                'mod': mod,
-                'mach': mach,
-                'machNum': machNum,
-                'reqDept': reqDept,
-                'probDetail': probDetail
-            })
-        })
+    //     const response = await fetch(`workOrders/createWorkOrder`, {
+    //         method: 'post',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({
+    //             'reqEmp': reqEmp,
+    //             'reqEmpTitle': reqEmpTitle,
+    //             'reqDate': reqDate,
+    //             'reqTime': reqTime,
+    //             'mod': mod,
+    //             'mach': mach,
+    //             'machNum': machNum,
+    //             'reqDept': reqDept,
+    //             'probDetail': probDetail
+    //         })
+    //     })
 
-        const data = await response.json();
-        alertOfWO();
-    } catch (err) {
-        console.log(err)
-    }
+    //     const data = await response.json();
+    //     alertOfWO();
+    // } catch (err) {
+    //     console.log(err)
+    // }
 }

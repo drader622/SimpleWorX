@@ -1,35 +1,37 @@
 <%- include('partials/header') -%>
-<main>
+<main class="woInfo flex">
    <section class="buttons flex">
-      <a href="#" class="respond hidden">Respond</a>
-      <a href="#" class="close hidden">Close</a>
-      <a href="#" class="delete hidden">Delete</a>
+      <a href="#" class="respond">Respond</a>
+      <a href="#" class="close">Close</a>
+      <a href="#" class="delete">Delete</a>
    </section>
    <section class="info flex">
-      <section class="requested flex">
-         <section class="left flex">
+      <section class="container requested flex">
+         <section class="woTop flex">
             <div>WO# <%= workOrder.workOrderNum %></div>
-            <div>Status: workOrer.status</div>
-            <div>Requested Dept: <span id="department"></span></div>
-            <div>Requested Location: <span id="location"></span></div>
+            <div>Status: <%= workOrder.status %></div>
          </section>
-         <section class="middle flex">
-            <div>Requested By: <span id="reqBy"></span></div>
-            <div>Requested Day: <span id="reqDate"></span></div>
-            <div>Requested Time: <span id="reqTime"></span></div>
-         </section>
-         <section class="textDetail">
-            <h2>Problem Detail</h2>
-            <span id="detail"></span>
+         <section class="reqBottom flex">
+            <section class="info flex">
+               <div>Requested Dept: <span id="department"></span></div>
+               <div>Requested Location: <span id="location"></span></div>
+               <div>Requested By: <span id="reqBy"></span></div>
+               <div>Requested Day: <span id="reqDate"></span></div>
+               <div>Requested Time: <span id="reqTime"></span></div>
+            </section>
+            <section class="detail flex">
+               <h2>Problem Detail</h2>
+               <span id="detail"></span>
+            </section>
          </section>
       </section>
-      <section class="responded flex">
-         <section class="right flex">
+      <section class="container responded flex">
+         <section class="info flex">
             <div>Responded By: <span id="resEmp"></span></div>
             <div>Responded Day: <span id="resDate"></span></div>
             <div>Responded Time: <span id="resTime"></span></div>
          </section>
-         <section class="textDetail flex">
+         <section class="detail flex">
             <h2>Solution Detail</h2>
             <section class="solDetail"></section>
          </section>

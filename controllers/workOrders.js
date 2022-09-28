@@ -71,27 +71,20 @@ module.exports = {
         try {
             let workOrderNum;
             workOrderNum = await setWONum();
-            WorkOrder.create({
+            let reqLocation;
+            reqLocation = `${req.body.machine} ${(req.body.module).slice(-1)}${req.body.machNum}`;
+            await WorkOrder.create({
                 workOrderNum: workOrderNum,
                 status: 'open',
                 respondedTo: false,
-                reqEmp: req.body.reqEmp,
-                reqEmpTitle: req.body.reqEmpTitle,
-                reqDate: req.body.reqDate,
-                reqTime: req.body.reqTime,
-                mod: req.body.mod,
-                mach: req.body.mach,
-                machNum: req.body.machNum,
-                reqDept: req.body.reqDept,
+                reqEmp: `${req.user.firstName} ${req.user.lastName}`,
+                reqEmpTitle: req.user.title,
+                reqLocation: reqLocation,
+                reqDept: req.body.shop,
                 probDetail: req.body.probDetail,
-                resEmp: '',
-                resEmpTitle: '',
-                resDate: '',
-                resTime: '',
-                solutionDetail: '',
                 userId: req.user._id
-            })
-            res.json(workOrderNum);
+            });
+            res.redirect('/workOrders');
         } catch (err) {
             console.log(err);
         }

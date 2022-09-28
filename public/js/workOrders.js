@@ -45,7 +45,7 @@ channel.bind('my-event', function (data) {
 });
 
 // ONLOAD METHODS
-getRequests();
+// getRequests();
 
 // NON SERVER FUNCTIONALITY
 function getDepartmentName(num) {

@@ -31,40 +31,9 @@
                      <a href="/woInfo/<%= workOrders[i]._id %>" class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
                         <span class="woNum">WO# <%= workOrders[i].workOrderNum %></span>
                         <span><%= workOrders[i].status %></span>
-                        <% switch(workOrders[i].reqDept) {
-                           case '1' : %>
-                              <span>Dept Lead</span>
-                           <% break;
-                           case '2' : %>
-                              <span>Electrician</span>
-                           <% break;
-                           case '3' : %>
-                              <span>Machinist</span>
-                           <% break;
-                           case '4' : %>
-                              <span>Millwright</span>
-                           <% break;
-                           case '5' : %>
-                              <span>Warehouse</span>
-                           <% break;
-                        } %>   
-                        <% switch(workOrders[i].mach) {
-                           case '1' : %>
-                              <span>SP <%= workOrders[i].mod %> <%= workOrders[i].machNum %></span>
-                           <% break;
-                           case '2' : %>
-                              <span>BAL <%= workOrders[i].mod %> <%= workOrders[i].machNum %></span>
-                           <% break;
-                           case '3' : %>
-                              <span>LNR <%= workOrders[i].mod %> <%= workOrders[i].machNum %></span>
-                           <% break;
-                           case '4' : %>
-                              <span>CP <%= workOrders[i].mod %> <%= workOrders[i].machNum %></span>
-                           <% break;
-                           case '5' : %>
-                              <span>AB <%= workOrders[i].mod %> <%= workOrders[i].machNum %></span>
-                           <% break;
-                        } %>   
+                        <span><%= workOrders[i].reqDept %></span>
+                        <span><%= workOrders[i].reqLocation %></span>
+
                         <span><%= workOrders[i].probDetail %></span>
                         <span class="hidden"><%= workOrders[i].respondedTo %></span>
                      </a>
@@ -231,5 +200,6 @@
       </section>
    </section>
    <script type="text/javascript" src="js/workOrders.js"></script>
+   <script type="text/javascript" src="js/main.js"></script>
 <%- include('partials/footer') -%>
 

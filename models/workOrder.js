@@ -21,22 +21,10 @@ const WorkOrderSchema = new mongoose.Schema({
         required: true
     },
     reqDate: {
-        type: String,
-        required: true
+        type: Date,
+        default: Date.now
     },
-    reqTime: {
-        type: String,
-        required: true
-    },
-    mod: {
-        type: String,
-        required: true
-    },
-    mach: {
-        type: String,
-        required: true
-    },
-    machNum: {
+    reqLocation: {
         type: String,
         required: true
     },

@@ -570,74 +570,17 @@ p {
    }
 }
 
-/* WO INFO */
+/******************************************
+/* WOINFO.EJS
+/*******************************************/
 .woInfo {
-   flex-direction: column;
-   justify-content: space-between;
-   flex-wrap: wrap;
-   background: rgba(239, 239, 239, 0.85);
-   background: rgba(0, 0, 0, 0.15);
-   background: rgba(6, 23, 59, 0.8);
-   background: rgb(6, 23, 59);
-   background: white;
-   /* color: white; */
-   padding: 1rem 0 0;
-   border: 1rem solid transparent;
-   border-radius: 1rem;
+   margin-top: 6rem;
+   justify-content: space-around;
 }
-.requested {
-   width: 58%;
-   justify-content: center;
-}
-.responded {
-   width: 41%;
-   justify-content: center;
-}
-.woInfo .left,
-.woInfo .middle,
-.woInfo .right,
-.woInfo .textDetail {
-   height: 100%;
-   width: 270px;
-   flex-direction: column;
-   padding: 0.5rem;
-   /* border-right: 1px solid black; */
-}
-.woInfo .middle {
-   padding-left: 1rem;
-}
-.textDetail {
-   text-align: center;
-   align-items: center;
-}
-.responded .textDetail {
-   border-right: none;
-}
-#status {
-   font-weight: bold;
-}
-
-.woInfo div {
-   font-size: 1.5rem;
-   font-weight: bold;
-}
-.woInfo span {
-   width: 22rem;
-   font-size: 1.5rem;
-   font-weight: normal;
-   color: black;
-}
-.info {
-   justify-content: space-between;
-   flex-wrap: wrap;
-   /* border-top: 1px solid black; */
-   margin-top: 1rem;
-}
-
 .buttons {
-   height: 3rem;
-   width: 100%;
    justify-content: space-evenly;
+   flex-direction: column;
+   margin: 2rem 0;
 }
 .buttons a {
    width: 11rem;
@@ -649,7 +592,46 @@ p {
    color: black;
    border-radius: 3rem;
    padding: 1rem;
+   margin: 1rem 0;
 }
+.info {
+   width: 70%;
+   flex-direction: column;
+}
+.woTop {
+   justify-content: space-between;
+   border: 1px solid black;
+   padding: 1rem;
+}
+.requested {
+   flex-direction: column;
+}
+.reqBottom {
+   margin: 2rem 0 0;
+}
+.woInfo .container {
+   margin: 1rem 0;
+}
+.reqBottom,
+.responded {
+   border: 1px solid black;
+   padding: 1rem;
+}
+
+#status {
+   font-weight: bold;
+}
+
+.woInfo div {
+   font-size: 1.5rem;
+   font-weight: bold;
+}
+.woInfo span {
+   font-size: 1.5rem;
+   font-weight: normal;
+   color: black;
+}
+
 .buttons .respond {
    background: rgb(250, 150, 0);
 }
@@ -659,16 +641,6 @@ p {
 .buttons .delete {
    color: white;
    background: red;
-}
-.solDetail,
-.solDetailText {
-   height: 9rem;
-   width: 155px;
-   font-size: 1.5rem;
-}
-.solDetailText {
-   height: 8rem;
-   margin: 0 auto;
 }
 
 @media all and (max-width: 1230px) {
@@ -971,14 +943,6 @@ p {
 #signupPage .main form input {
    font-size: 2rem;
 }
-
-
-
-
-
-
-
-
 
 /* .disabled {
    background: gray;
