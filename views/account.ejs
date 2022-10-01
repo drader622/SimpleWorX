@@ -4,13 +4,35 @@
       <h1 class="personal">Personal Information</h1>
       <section class="flex personalInfo">
          <section class="summary">
-            <h2 class="employeeName" id="employeeName"></h2>
-            <img src="<%= user.image %>" alt="" class="employeePicture" />
+            <section>
+               <h2 class="employeeName" id="employeeName"></h2>
+               <img src="<%= user.image %>" alt="" class="employeePicture" />
+            </section>
+            <form
+               action="/account/updateImage/?_method=PUT"
+               enctype="multipart/form-data"
+               method="POST"
+            >
+               <section class="imageUpload flex">
+                  <input type="file" class="imageFile hidden" name="file" />
+               </section>
+               <section class="edit flex">
+                  <span class="editBtn hidden" id="imageCancel"
+                     ><i class="fa-solid fa-xmark"></i
+                  ></span>
+                  <button class="editBtn hidden" id="imageSave" type="submit">
+                     <i class="fa-solid fa-floppy-disk"></i>
+                  </button>
+                  <span class="editBtn darkMode" id="imageEdit"
+                     ><i class="fa-solid fa-pen"></i
+                  ></span>
+               </section>
+            </form>
          </section>
          <form
-            action="/account/updateInfo/?_method=PUT"
+            action="/account/updatePersonalInfo/?_method=PUT"
             method="POST"
-            class="flex formInputs"
+            class="flex formInputs personalForm"
          >
             <section class="flex inputField darkMode">
                <h2>First Name</h2>
@@ -18,8 +40,8 @@
                   class="userInput darkMode"
                   type="text"
                   name="firstName"
-                  id="firstName"
                   value="<%= user.firstName %>"
+                  id="firstName"
                   disabled
                />
             </section>
@@ -28,8 +50,9 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="lastName"
+                  name="lastName"
                   value="<%= user.lastName %>"
+                  id="lastName"
                   disabled
                />
             </section>
@@ -38,7 +61,7 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="email"
+                  name="email"
                   value="<%= user.email %>"
                   disabled
                />
@@ -48,8 +71,8 @@
                <input
                   class="userInput darkMode"
                   type="number"
-                  id="number"
-                  value="4196152130"
+                  name="phone"
+                  value="<%= user.phone %>"
                   disabled
                />
             </section>
@@ -58,8 +81,8 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="address1"
-                  value="605 N Ash St"
+                  name="streetAddress"
+                  value="<%= user.streetAddress %>"
                   disabled
                />
             </section>
@@ -72,8 +95,8 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="city"
-                  value="Deshler"
+                  name="city"
+                  value="<%= user.city %>"
                   disabled
                />
             </section>
@@ -82,8 +105,8 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="state"
-                  value="Ohio"
+                  name="state"
+                  value="<%= user.state %>"
                   disabled
                />
             </section>
@@ -92,19 +115,19 @@
                <input
                   class="userInput darkMode"
                   type="text"
-                  id="zipCode"
-                  value="43516"
+                  name="zip"
+                  value="<%= user.zip %>"
                   disabled
                />
             </section>
             <section class="edit flex">
-               <span class="editBtn hidden" id="cancel"
+               <span class="editBtn hidden" id="personalCancel"
                   ><i class="fa-solid fa-xmark"></i
                ></span>
-               <button class="editBtn hidden" id="save" type="submit">
+               <button class="editBtn hidden" id="personalSave" type="submit">
                   <i class="fa-solid fa-floppy-disk"></i>
                </button>
-               <span class="editBtn darkMode" id="edit"
+               <span class="editBtn darkMode" id="personalEdit"
                   ><i class="fa-solid fa-pen"></i
                ></span>
             </section>
@@ -112,40 +135,67 @@
       </section>
 
       <h1 class="employment">Employment Information</h1>
-      <form action="" class="flex employmentInfo formInputs">
-         <section class="flex inputField darkMode">
-            <h2>Job Title</h2>
-            <input
-               class="darkMode"
-               type="text"
-               id="jobTitle"
-               value="Electronic Technician"
-               disabled
-            />
+      <form
+         action="/account/updateEmploymentInfo/?_method=PUT"
+         method="POST"
+         class="flex employmentForm formInputs"
+      >
+         <section class="flex">
+            <section class="flex inputField darkMode">
+               <h2>Job Title</h2>
+               <input
+                  class="userInput darkMode"
+                  type="text"
+                  name="title"
+                  value="<%= user.title %>"
+                  disabled
+               />
+            </section>
+            <section class="flex inputField darkMode">
+               <h2>Compensation</h2>
+               <section class="container">
+                  <span>$</span>
+                  <input
+                     class="userInput darkMode compensation"
+                     type="text"
+                     name="compensation"
+                     value="<%= user.compensation %>"
+                     disabled
+                  />
+                  <span>/hr</span>
+               </section>
+            </section>
+            <section class="flex inputField darkMode">
+               <h2>Supervisor</h2>
+               <input
+                  class="userInput darkMode"
+                  type="text"
+                  name="supervisor"
+                  value="<%= user.supervisor %>"
+                  disabled
+               />
+            </section>
+            <section class="flex inputField darkMode">
+               <h2>Crew</h2>
+               <input
+                  class="userInput darkMode"
+                  type="text"
+                  name="crew"
+                  value="<%= user.crew %>"
+                  disabled
+               />
+            </section>
          </section>
-         <section class="flex inputField darkMode">
-            <h2>Compensation</h2>
-            <input
-               class="darkMode"
-               type="text"
-               id="pay"
-               value="$48.71/hr"
-               disabled
-            />
-         </section>
-         <section class="flex inputField darkMode">
-            <h2>Supervisor</h2>
-            <input
-               class="darkMode"
-               type="text"
-               id="Supervisor"
-               value="Ted Bonham"
-               disabled
-            />
-         </section>
-         <section class="flex inputField darkMode">
-            <h2>Crew</h2>
-            <input class="darkMode" type="text" id="crew" value="C" disabled />
+         <section class="edit flex">
+            <span class="editBtn hidden" id="employmentCancel"
+               ><i class="fa-solid fa-xmark"></i
+            ></span>
+            <button class="editBtn hidden" id="employmentSave" type="submit">
+               <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <span class="editBtn darkMode" id="employmentEdit"
+               ><i class="fa-solid fa-pen"></i
+            ></span>
          </section>
       </form>
    </section>

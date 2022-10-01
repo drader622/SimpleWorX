@@ -73,7 +73,11 @@ exports.postSignup = async (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
   // Upload image to cloudinary
-  const result = await cloudinary.uploader.upload(req.file.path);
+  // let imageFile;
+  // if (req.file.path !== undefined) {
+    // const result = await cloudinary.uploader.upload(req.file.path);
+  // }
+
 
   const user = new User({
     firstName: req.body.firstName,
@@ -82,12 +86,10 @@ exports.postSignup = async (req, res, next) => {
     department: req.body.department,
     userName: req.body.userName,
     email: req.body.email,
-    image: result.secure_url,
-    cloudinaryId: result.public_id,
+    // image: result.secure_url,
+    // cloudinaryId: result.public_id,
     password: req.body.password
   })
-
-  console.log(user);
 
   User.findOne({
     $or: [

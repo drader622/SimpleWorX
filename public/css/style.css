@@ -820,12 +820,25 @@ p {
    padding-bottom: 1rem;
    margin: 0;
 }
-.personalInfo,
-.employmentInfo {
+.summary {
+   width: 290px;
+}
+.imageUpload {
+   height: 2.5rem;
+   font-size: 1.4rem;
+}
+.imageFile {
+   width: 20rem;
+}
+.personalInfo {
    justify-content: space-evenly;
 }
-.employmentInfo {
-   flex-direction: row;
+.employmentForm {
+   flex-direction: column;
+}
+.employmentForm .edit {
+   width: 85%;
+   justify-content: flex-end;
 }
 .personal,
 .employment,
@@ -839,23 +852,24 @@ p {
 .employment {
    margin-top: 10rem;
 }
-.employmentInfo.formInputs {
-   flex-direction: row;
+.employmentForm .container {
+   font-size: 1.6rem;
+   text-align: left;
 }
 .employeePicture {
    height: 20rem;
    border: 2px solid black;
    border-radius: 2rem;
+   margin-bottom: 2rem;
 }
 .formInputs {
    max-height: 42rem;
-   /* width: 50%; */
    flex-direction: column;
    flex-wrap: wrap;
 }
 .inputField {
    height: 7rem;
-   /* width: 20rem; */
+   width: 22.5rem;
    flex-direction: column;
    color: rgb(132, 149, 180);
    background: rgb(6, 23, 59);
@@ -906,6 +920,9 @@ p {
 .editBtn:hover {
    position: relative;
    top: -0.25rem;
+}
+.compensation {
+   width: 10rem;
 }
 
 /******************************************
