@@ -1,13 +1,11 @@
-let editButton = document.getElementById('edit');
-let saveButton = document.getElementById('save');
-let cancelButton = document.getElementById('cancel');
-let userInputs = document.querySelectorAll('.userInput');
-let employeeName = document.getElementById('employeeName');
+let editButton = document.getElementById('edit'),
+    saveButton = document.getElementById('save'),
+    cancelButton = document.getElementById('cancel'),
+    userInputs = document.querySelectorAll('.userInput'),
+    employeeName = document.getElementById('employeeName');
 editButton.addEventListener('click', edit);
-saveButton.addEventListener('click', save);
 cancelButton.addEventListener('click', cancel);
 
-//MUST PUT DATA INTO DB FIRST
 employeeName.innerHTML = `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
 
 function edit() {
@@ -16,29 +14,15 @@ function edit() {
     editButton.classList.add('disabled');
     userInputs.forEach(input => {
         input.disabled = false;
-        input.style.backgroundColor = 'white';
+        input.classList.add('whiteBackground');
     });
 }
-function save() {
-    setInputBackground();
-    employeeName.innerHTML = `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
-}
 function cancel() {
-    setInputBackground();
-}
-function setInputBackground() {
     saveButton.classList.add('hidden');
     cancelButton.classList.add('hidden');
     editButton.classList.remove('disabled');
-    if (localStorage.getItem('darkMode') === 'true') {
-        userInputs.forEach(input => {
-            input.disabled = true;
-            input.style.backgroundColor = 'rgb(75, 85, 103)';
-        });
-    } else {
-        userInputs.forEach(input => {
-            input.disabled = true;
-            input.style.backgroundColor = 'rgb(6, 23, 59)';
-        });
-    }
+    userInputs.forEach(input => {
+        input.disabled = true;
+        input.classList.remove('whiteBackground');
+    });
 }

@@ -1,8 +1,6 @@
 let sortOptions = document.querySelector('#sortOptions'),
-    darkLetteringArr = document.querySelectorAll('.darkLettering'),
     htmlDOM = document.querySelector('html'),
     logo = document.querySelector('.logo'),
-    logoutText = document.querySelector('.logout'),
     toggleSwitch = document.getElementById('switch'),
     woInfo = document.querySelector('.woInfo'),
     navLines = document.querySelectorAll('.line'),

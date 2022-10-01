@@ -5,53 +5,58 @@
       <section class="flex personalInfo">
          <section class="summary">
             <h2 class="employeeName" id="employeeName"></h2>
-            <img src="\images\headshot.png" alt="" class="employeePicture" />
+            <img src="<%= user.image %>" alt="" class="employeePicture" />
          </section>
-         <form action="" class="flex formInputs">
-            <section class="flex inputField">
+         <form
+            action="/account/updateInfo/?_method=PUT"
+            method="POST"
+            class="flex formInputs"
+         >
+            <section class="flex inputField darkMode">
                <h2>First Name</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
+                  name="firstName"
                   id="firstName"
                   value="<%= user.firstName %>"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>Last Name</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="lastName"
                   value="<%= user.lastName %>"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>Email</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="email"
                   value="<%= user.email %>"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>Phone Number</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="number"
                   id="number"
                   value="4196152130"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>Street Address</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="address1"
                   value="605 N Ash St"
@@ -62,91 +67,85 @@
                         <h2>Address Line 2</h2>
                         <input class="darkBackground" type="text" id="address2" value="" disabled>
                      </section> -->
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>City</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="city"
                   value="Deshler"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>State</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="state"
                   value="Ohio"
                   disabled
                />
             </section>
-            <section class="flex inputField">
+            <section class="flex inputField darkMode">
                <h2>Zip Code</h2>
                <input
-                  class="userInput"
+                  class="userInput darkMode"
                   type="text"
                   id="zipCode"
                   value="43516"
                   disabled
                />
             </section>
+            <section class="edit flex">
+               <span class="editBtn hidden" id="cancel"
+                  ><i class="fa-solid fa-xmark"></i
+               ></span>
+               <button class="editBtn hidden" id="save" type="submit">
+                  <i class="fa-solid fa-floppy-disk"></i>
+               </button>
+               <span class="editBtn darkMode" id="edit"
+                  ><i class="fa-solid fa-pen"></i
+               ></span>
+            </section>
          </form>
-      </section>
-      <section class="flex edit">
-         <a href="#" class="editBtn hidden" id="cancel"
-            ><i class="fa-solid fa-xmark"></i
-         ></a>
-         <a href="#" class="editBtn hidden" id="save"
-            ><i class="fa-solid fa-floppy-disk"></i
-         ></a>
-         <a href="#" class="editBtn" id="edit"
-            ><i class="fa-solid fa-pen"></i
-         ></a>
       </section>
 
       <h1 class="employment">Employment Information</h1>
       <form action="" class="flex employmentInfo formInputs">
-         <section class="flex inputField">
+         <section class="flex inputField darkMode">
             <h2>Job Title</h2>
             <input
-               class=""
+               class="darkMode"
                type="text"
                id="jobTitle"
                value="Electronic Technician"
                disabled
             />
          </section>
-         <section class="flex inputField">
+         <section class="flex inputField darkMode">
             <h2>Compensation</h2>
             <input
-               class=""
+               class="darkMode"
                type="text"
                id="pay"
                value="$48.71/hr"
                disabled
             />
          </section>
-         <section class="flex inputField">
+         <section class="flex inputField darkMode">
             <h2>Supervisor</h2>
             <input
-               class="
+               class="darkMode"
                type="text"
                id="Supervisor"
                value="Ted Bonham"
                disabled
             />
          </section>
-         <section class="flex inputField">
+         <section class="flex inputField darkMode">
             <h2>Crew</h2>
-            <input
-               class=""
-               type="text"
-               id="crew"
-               value="C"
-               disabled
-            />
+            <input class="darkMode" type="text" id="crew" value="C" disabled />
          </section>
       </form>
    </section>
