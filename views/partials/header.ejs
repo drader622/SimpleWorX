@@ -58,18 +58,25 @@
          </nav>
         <section class="employee darkMode flex">
             <img class="logo" src="/images/default-monochrome.svg" alt="">
-            </img>            
-            <section class="flex">
-               <section class="container flex">
-                  <span><%= user.firstName %> <%= user.lastName %></span>
-                  <span><%= user.title %></span>
-                  <span><%= user.department %></span>
+            </img>
+            <% if (user !== undefined) { %>            
+               <section class="flex">
+                  <section class="container flex">
+                     <span><%= user.firstName %> <%= user.lastName %></span>
+                     <span><%= user.title %></span>
+                     <span><%= user.department %></span>
+                  </section>
+                  <span class="userPic"
+                  ><img class="headshot" src="<%= user.image %>" alt=""
+                  /></span>
+                  <a href="/logout" class="darkMode logout">Logout</a>
                </section>
-               <span class="userPic"
-               ><img class="headshot" src="<%= user.image %>" alt=""
-               /></span>
-               <a href="/logout" class="logout">Logout</a>
-            </section>
+            <% } else { %>
+               <section class="flex">
+                  <a href="/" class="darkMode"><i class="fa-solid fa-house"></i></a>
+                  <a href="/login" class="darkMode logout">Login</a>
+               </section>
+            <% } %>
             <section>
                <p>Dark Mode</p>
                <input type="checkbox" id="switch" class="checkbox" />                 

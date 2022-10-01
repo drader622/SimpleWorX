@@ -6,19 +6,19 @@ sortOptionSelector.addEventListener('change', sortWOList);
 
 
 //PUSHER
-let temp = '0badd11ed0483edfa1ed';
-var pusher = new Pusher(temp, {
-    cluster: 'us2'
-});
+// let temp = '0badd11ed0483edfa1ed';
+// var pusher = new Pusher(temp, {
+//     cluster: 'us2'
+// });
 
-let channel = pusher.subscribe('my-channel');
-channel.bind('my-event', function (data) {
-    if (data.reload === true) {
-        loadPage(data.woNum)
-    } else {
-        location.reload();
-    }
-});
+// let channel = pusher.subscribe('my-channel');
+// channel.bind('my-event', function (data) {
+//     if (data.reload === true) {
+//         loadPage(data.woNum)
+//     } else {
+//         location.reload();
+//     }
+// });
 
 
 // NON SERVER FUNCTIONALITY

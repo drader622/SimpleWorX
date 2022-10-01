@@ -734,9 +734,6 @@ p {
 /******************************************
 /* CREATE.EJS
 /*******************************************/
-#createPage .main {
-   height: 45rem;
-}
 .optionsContainer {
    max-width: 100%;
    align-items: center;
@@ -904,7 +901,7 @@ p {
 /******************************************
 /* TEAM.EJS
 /*******************************************/
-.team .main {
+.team {
    justify-content: space-between;
    margin: 2rem 0;
 }

@@ -1,158 +1,156 @@
 <%- include('partials/header') -%>
-<section class="mainContainer">
-   <section class="main">
-      <section class="accountInfoMain flex">
-         <h1 class="personal darkLettering">Personal Information</h1>
-         <section class="flex personalInfo">
-            <section class="summary darkLettering">
-               <h2 class="employeeName darkLettering" id="employeeName"></h2>
-               <img src="\images\headshot.png" alt="" class="employeePicture" />
+<main class="mainContainer">
+   <section class="accountInfoMain flex">
+      <h1 class="personal">Personal Information</h1>
+      <section class="flex personalInfo">
+         <section class="summary">
+            <h2 class="employeeName" id="employeeName"></h2>
+            <img src="\images\headshot.png" alt="" class="employeePicture" />
+         </section>
+         <form action="" class="flex formInputs">
+            <section class="flex inputField">
+               <h2>First Name</h2>
+               <input
+                  class="userInput"
+                  type="text"
+                  id="firstName"
+                  value="<%= user.firstName %>"
+                  disabled
+               />
             </section>
-            <form action="" class="flex formInputs">
-               <section class="flex inputField darkBackground">
-                  <h2>First Name</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="firstName"
-                     value="<%= user.firstName %>"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>Last Name</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="lastName"
-                     value="<%= user.lastName %>"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>Email</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="email"
-                     value="<%= user.email %>"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>Phone Number</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="number"
-                     id="number"
-                     value="4196152130"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>Street Address</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="address1"
-                     value="605 N Ash St"
-                     disabled
-                  />
-               </section>
-               <!-- <section class="flex inputField darkBackground">
+            <section class="flex inputField">
+               <h2>Last Name</h2>
+               <input
+                  class="userInput"
+                  type="text"
+                  id="lastName"
+                  value="<%= user.lastName %>"
+                  disabled
+               />
+            </section>
+            <section class="flex inputField">
+               <h2>Email</h2>
+               <input
+                  class="userInput"
+                  type="text"
+                  id="email"
+                  value="<%= user.email %>"
+                  disabled
+               />
+            </section>
+            <section class="flex inputField">
+               <h2>Phone Number</h2>
+               <input
+                  class="userInput"
+                  type="number"
+                  id="number"
+                  value="4196152130"
+                  disabled
+               />
+            </section>
+            <section class="flex inputField">
+               <h2>Street Address</h2>
+               <input
+                  class="userInput"
+                  type="text"
+                  id="address1"
+                  value="605 N Ash St"
+                  disabled
+               />
+            </section>
+            <!-- <section class="flex inputField darkBackground">
                         <h2>Address Line 2</h2>
                         <input class="darkBackground" type="text" id="address2" value="" disabled>
                      </section> -->
-               <section class="flex inputField darkBackground">
-                  <h2>City</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="city"
-                     value="Deshler"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>State</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="state"
-                     value="Ohio"
-                     disabled
-                  />
-               </section>
-               <section class="flex inputField darkBackground">
-                  <h2>Zip Code</h2>
-                  <input
-                     class="userInput darkBackground"
-                     type="text"
-                     id="zipCode"
-                     value="43516"
-                     disabled
-                  />
-               </section>
-            </form>
-         </section>
-         <section class="flex edit">
-            <a href="#" class="editBtn hidden" id="cancel"
-               ><i class="fa-solid fa-xmark"></i
-            ></a>
-            <a href="#" class="editBtn hidden" id="save"
-               ><i class="fa-solid fa-floppy-disk"></i
-            ></a>
-            <a href="#" class="editBtn darkBackground" id="edit"
-               ><i class="fa-solid fa-pen"></i
-            ></a>
-         </section>
-
-         <h1 class="employment darkLettering">Employment Information</h1>
-         <form action="" class="flex employmentInfo formInputs">
-            <section class="flex inputField darkBackground">
-               <h2>Job Title</h2>
+            <section class="flex inputField">
+               <h2>City</h2>
                <input
-                  class="darkBackground"
+                  class="userInput"
                   type="text"
-                  id="jobTitle"
-                  value="Electronic Technician"
+                  id="city"
+                  value="Deshler"
                   disabled
                />
             </section>
-            <section class="flex inputField darkBackground">
-               <h2>Compensation</h2>
+            <section class="flex inputField">
+               <h2>State</h2>
                <input
-                  class="darkBackground"
+                  class="userInput"
                   type="text"
-                  id="pay"
-                  value="$48.71/hr"
+                  id="state"
+                  value="Ohio"
                   disabled
                />
             </section>
-            <section class="flex inputField darkBackground">
-               <h2>Supervisor</h2>
+            <section class="flex inputField">
+               <h2>Zip Code</h2>
                <input
-                  class="darkBackground"
+                  class="userInput"
                   type="text"
-                  id="Supervisor"
-                  value="Ted Bonham"
-                  disabled
-               />
-            </section>
-            <section class="flex inputField darkBackground">
-               <h2>Crew</h2>
-               <input
-                  class="darkBackground"
-                  type="text"
-                  id="crew"
-                  value="C"
+                  id="zipCode"
+                  value="43516"
                   disabled
                />
             </section>
          </form>
       </section>
+      <section class="flex edit">
+         <a href="#" class="editBtn hidden" id="cancel"
+            ><i class="fa-solid fa-xmark"></i
+         ></a>
+         <a href="#" class="editBtn hidden" id="save"
+            ><i class="fa-solid fa-floppy-disk"></i
+         ></a>
+         <a href="#" class="editBtn" id="edit"
+            ><i class="fa-solid fa-pen"></i
+         ></a>
+      </section>
+
+      <h1 class="employment">Employment Information</h1>
+      <form action="" class="flex employmentInfo formInputs">
+         <section class="flex inputField">
+            <h2>Job Title</h2>
+            <input
+               class=""
+               type="text"
+               id="jobTitle"
+               value="Electronic Technician"
+               disabled
+            />
+         </section>
+         <section class="flex inputField">
+            <h2>Compensation</h2>
+            <input
+               class=""
+               type="text"
+               id="pay"
+               value="$48.71/hr"
+               disabled
+            />
+         </section>
+         <section class="flex inputField">
+            <h2>Supervisor</h2>
+            <input
+               class="
+               type="text"
+               id="Supervisor"
+               value="Ted Bonham"
+               disabled
+            />
+         </section>
+         <section class="flex inputField">
+            <h2>Crew</h2>
+            <input
+               class=""
+               type="text"
+               id="crew"
+               value="C"
+               disabled
+            />
+         </section>
+      </form>
    </section>
-</section>
+</main>
 
 <script type="text/javascript" src="js/account.js"></script>
 <%- include('partials/footer') -%>
