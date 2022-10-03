@@ -7,11 +7,7 @@ module.exports = {
         const department = await Department.find({ deptName: req.user.department });
         const depts = await Department.find();
         let bossData;
-        if (req.user.title === 'Supervisor') {
-            bossData = await User.find({ department: req.user.department, title: 'Manager' });
-        } else {
-            bossData = await User.find({ department: req.user.department, title: 'Supervisor' });
-        }
+        bossData = await User.find({ _id: req.user.directReport })
         res.render('account.ejs', {
             user: req.user,
             depts: depts,

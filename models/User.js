@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
   cloudinaryId: { type: String },
   title: { type: String,},
   department: { type: String },
+  directReport: { type: mongoose.Schema.Types.ObjectId },
   userName: { type: String, },
   email: { type: String, },
   password: String,

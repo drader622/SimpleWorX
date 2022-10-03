@@ -3,11 +3,11 @@
    <ul class="organization flex">
       <li class="flex user">
          <span class="picContainer"
-            ><img src="\images\headshot.png" alt="" class="pic"
+            ><img src="<%= bossData.image %>" alt="" class="pic"
          /></span>
          <section class="flex">
-            <span>Danielle Rader</span>
-            <span>Electronic Technician</span>
+            <span><%= bossData.firstName %> <%= bossData.lastName %></span>
+            <span><%= bossData.title %></span>
          </section>
       </li>
       <div class="reportsTo flex">
@@ -16,11 +16,14 @@
       <h3 class="reports">Reports To</h3>
       <li class="flex user">
          <span class="picContainer"
-            ><img src="\images\headshot.png" alt="" class="pic"
+            ><img src="<%= user.image %>" alt="" class="pic"
          /></span>
          <section class="flex">
-            <span>Danielle Rader</span>
-            <span>Electronic Technician</span>
+            <span><%= user.firstName %> <%= user.lastName %></span>
+            <span>
+               <% if (user.title === undefined) { %> ""  <% } else { %> <%= user.title
+               %> <% } %>
+            </span>
          </section>
       </li>
       <div class="reportsTo flex">
