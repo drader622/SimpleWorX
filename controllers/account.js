@@ -1,9 +1,23 @@
 const cloudinary = require("../middleware/cloudinary");
 const User = require('../models/User');
+const Department = require('../models/Department')
 
 module.exports = {
-    getIndex: (req, res) => {
-        res.render('account.ejs', { user: req.user });
+    getIndex: async (req, res) => {
+        const department = await Department.find({ deptName: req.user.department });
+        const depts = await Department.find();
+        let bossData;
+        if (req.user.title === 'Supervisor') {
+            bossData = await User.find({ department: req.user.department, title: 'Manager' });
+        } else {
+            bossData = await User.find({ department: req.user.department, title: 'Supervisor' });
+        }
+        res.render('account.ejs', {
+            user: req.user,
+            depts: depts,
+            deptTitles: department[0].deptTitles,
+            bossName: `${bossData[0].firstName} ${bossData[0].lastName}`
+        });
     },
     updateInfo: async (req, res) => {
         try {
@@ -47,12 +61,19 @@ module.exports = {
     },
     updateEmploymentInfo: async (req, res) => {
         try {
+            let empTitle = req.body.title[0];
+            if (empTitle === '') { empTitle = req.body.title[1] };
+
+            let empCrew = req.body.crew[0];
+            if (empCrew === '') { empCrew = req.body.crew[1] };
+
             await User.updateOne({ _id: req.user._id }, {
                 $set: {
-                    title: req.body.title,
+                    title: req.body.department,
+                    title: empTitle,
                     compensation: req.body.compensation,
-                    supervisor: req.body.supervisor,
-                    crew: req.body.crew,
+                    // supervisor: req.body.supervisor,
+                    crew: empCrew,
                 }
             }, {
                 sort: { _id: -1 },

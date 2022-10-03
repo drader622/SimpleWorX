@@ -1,26 +1,33 @@
 <%- include('partials/header') -%>
-<section class="main flex">
-   <section>
-      <% if (locals.messages.errors) { %> 
-         <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-         <% }) %> 
-      <% } %>
-      <form action="/signup" enctype="multipart/form-data" method="POST">
-         <input type="text" name="firstName" placeholder="First Name" />
-         <input type="text" name="lastName" placeholder="Last Name" />
-         <input type="text" name="title" placeholder="Job Title" />
-         <input type="text" name="department" placeholder="Department" />
-         <input type="text" name="userName" placeholder="User Name" />
-         <input type="email" name="email" placeholder="Email" />
-         <input type="password" name="password" placeholder="Password" />
-         <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-         />
-         <input type="submit" />
-      </form>
-   </section>
+<section class="signUp main flex mainContainer">
+   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+   <div class="alert alert-danger"><%= el.msg %></div>
+   <% }) %> <% } %>
+   <form
+      class="flex"
+      action="/signup"
+      enctype="multipart/form-data"
+      method="POST"
+   >
+      <input type="text" name="firstName" id="firstName" placeholder="First Name"/>
+      <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+      <select name="department" id="">
+         <% for (let i = 0; i < departments.length; i++) { %>
+            <option value="<%= departments[i].deptName %>"><%= departments[i].deptName %></option>
+         <% } %>
+      </select>
+      <!-- <input type="text" name="department" placeholder="Department" /> -->
+      <!-- <input type="text" name="title" placeholder="Job Title" /> -->
+      <input type="text" name="userName" placeholder="User Name" />
+      <input type="email" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <input
+         type="password"
+         name="confirmPassword"
+         placeholder="Confirm Password"
+      />
+      <button type="submit">Submit</button>
+   </form>
 </section>
+<!-- <script type="text/javascript" src="js/signup.js"></script> -->
 <%- include('partials/footer') -%>

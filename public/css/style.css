@@ -620,7 +620,7 @@ p {
    font-size: 1.5rem;
    font-weight: normal;
    color: white;
-   margin-left: .5rem;
+   margin-left: 0.5rem;
 }
 .reqInfo {
    flex-direction: column;
@@ -672,7 +672,7 @@ p {
    text-align: left;
    color: white;
    border-radius: 1rem;
-   padding: .5rem;
+   padding: 0.5rem;
 }
 
 .buttonsContainer .respond {
@@ -889,6 +889,7 @@ p {
    border: none;
 }
 .userInput {
+   height: 2.9rem;
    border-radius: 0.25rem;
    padding: 0.5rem;
 }
@@ -921,8 +922,15 @@ p {
    position: relative;
    top: -0.25rem;
 }
+.titleDropDown,
+.crewDropDown,
+.deptDropDown {
+   width: 20rem;
+   font-size: 1.6rem;
+   padding: 0;
+}
 .compensation {
-   width: 10rem;
+   width: 5rem;
 }
 
 /******************************************
@@ -990,16 +998,24 @@ p {
 /******************************************
 /* LOGIN.EJS
 /*******************************************/
-#loginPage .main form,
-#signupPage .main form {
-   width: 20rem;
+.signUp {
    height: 50rem;
+   flex-direction: column;
+   font-size: 2rem;
+}
+.signUp form {
    flex-direction: column;
    align-items: center;
 }
-#loginPage .main form input,
-#signupPage .main form input {
-   font-size: 2rem;
+.signUp input {
+   width: 25rem;
+   margin: .5rem;
+}
+.signUp select {
+   width: 25rem;
+}
+.signUp button {
+   margin-top: 2rem;
 }
 
 /* .disabled {

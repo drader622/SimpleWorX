@@ -142,21 +142,51 @@
       >
          <section class="flex">
             <section class="flex inputField darkMode">
+               <h2>Department</h2>
+               <input
+                  class="input userInput darkMode empDept"
+                  type="text"
+                  name="department"
+                  value="<%= user.department %>"
+                  disabled
+               />
+               <select
+                  class="input userInput deptDropDown hidden"
+                  name="title"
+               >
+                  <% for (let i = 0; i < depts.length; i++) { %>
+                  <option value="<%= depts[i].deptName %>">
+                     <%= depts[i].deptName %>
+                  </option>
+                  <% } %>
+               </select>
+            </section>
+            <section class="flex inputField darkMode">
                <h2>Job Title</h2>
                <input
-                  class="userInput darkMode"
+                  class="input userInput darkMode empTitle"
                   type="text"
                   name="title"
                   value="<%= user.title %>"
                   disabled
                />
+               <select
+                  class="input userInput titleDropDown hidden"
+                  name="title"
+               >
+                  <% for (let i = 0; i < deptTitles.length; i++) { %>
+                  <option value="<%= deptTitles[i] %>">
+                     <%= deptTitles[i] %>
+                  </option>
+                  <% } %>
+               </select>
             </section>
             <section class="flex inputField darkMode">
                <h2>Compensation</h2>
                <section class="container">
                   <span>$</span>
                   <input
-                     class="userInput darkMode compensation"
+                     class="input userInput darkMode compensation"
                      type="text"
                      name="compensation"
                      value="<%= user.compensation %>"
@@ -166,24 +196,35 @@
                </section>
             </section>
             <section class="flex inputField darkMode">
-               <h2>Supervisor</h2>
+               <h2>Reports To</h2>
                <input
                   class="userInput darkMode"
                   type="text"
                   name="supervisor"
-                  value="<%= user.supervisor %>"
+                  value="<%= bossName %>"
                   disabled
                />
             </section>
             <section class="flex inputField darkMode">
                <h2>Crew</h2>
                <input
-                  class="userInput darkMode"
+                  class="input userInput darkMode empCrew"
                   type="text"
                   name="crew"
                   value="<%= user.crew %>"
                   disabled
                />
+               <select name="crew" id="" class="userInput crewDropDown hidden">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="A/C Days">A/C Days</option>
+                  <option value="A/C Nights">A/C Nights</option>
+                  <option value="B/D Days">B/D Days</option>
+                  <option value="B/D Nights">B/D Nights</option>
+                  <option value="Days">Days</option>
+               </select>
             </section>
          </section>
          <section class="edit flex">

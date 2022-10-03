@@ -1,7 +1,8 @@
 const cloudinary = require("../middleware/cloudinary");
-const passport = require('passport')
-const validator = require('validator')
-const User = require('../models/User')
+const passport = require('passport');
+const validator = require('validator');
+const User = require('../models/User');
+const Department = require('../models/Department')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -49,14 +50,15 @@ exports.logout = (req, res) => {
   })
 }
 
-exports.getSignup = (req, res) => {
-  console.log(req.user)
+exports.getSignup = async (req, res) => {
+  const departments = await Department.find();
   if (req.user) {
     return res.redirect('/workOrders')
   }
   res.render('signup', {
     title: 'Create Account',
-    user: req.user
+    user: req.user,
+    departments: departments,
   })
 }
 
@@ -72,22 +74,12 @@ exports.postSignup = async (req, res, next) => {
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
-  // Upload image to cloudinary
-  // let imageFile;
-  // if (req.file.path !== undefined) {
-    // const result = await cloudinary.uploader.upload(req.file.path);
-  // }
-
-
   const user = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    title: req.body.title,
     department: req.body.department,
     userName: req.body.userName,
     email: req.body.email,
-    // image: result.secure_url,
-    // cloudinaryId: result.public_id,
     password: req.body.password
   })
 
@@ -108,7 +100,7 @@ exports.postSignup = async (req, res, next) => {
         if (err) {
           return next(err)
         }
-        res.redirect('/workOrders')
+        res.redirect('/account')
       })
     })
   })
