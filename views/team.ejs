@@ -1,32 +1,66 @@
 <%- include('partials/header') -%>
-<main class="mainContainer team flex">
+<main class="mainContainer flex">
+   <section class="team flex">
+      <section class="top flex">
+         <section>
+            <h1>Direct Report</h1>
+         </section>
+         <section class="empAndBoss flex">
+            <section class="flex user">
+               <span class="picContainer"
+                  ><img src="<%= bossData.image %>" alt="" class="pic"
+               /></span>
+               <section class="flex">
+                  <span
+                     ><%= bossData.firstName %> <%= bossData.lastName %></span
+                  >
+                  <span><%= bossData.title %></span>
+               </section>
+            </section>
+            <section class="flex user">
+               <span class="picContainer"
+                  ><img src="<%= user.image %>" alt="" class="pic"
+               /></span>
+               <section class="flex">
+                  <span><%= user.firstName %> <%= user.lastName %></span>
+                  <span>
+                     <% if (user.title === undefined) { %> "" <% } else { %> <%=
+                     user.title %> <% } %>
+                  </span>
+               </section>
+            </section>
+         </section>
+      </section>
+      <section>
+         <button>Department</button>
+         <button>Crew</button>
+      </section>
+      <section>
+         <section class="department">
+            <h1>Department Employees</h1>
+            <ul>
+               <% for (let i = 0; i < deptEmployees.length; i++) { %> 
+                  <% if (deptEmployees[i].title !== 'Supervisor' && deptEmployees[i].title !== 'Manager') { %>
+                     <li class="flex user">
+                        <span class="picContainer"
+                           ><img src="<%= deptEmployees[i].image %>" alt="" class="pic"
+                        /></span>
+                        <section>
+                           <span><%= deptEmployees[i].firstName %> <%= deptEmployees[i].lastName %></span>
+                        </section>
+                     </li>
+                  <% } %> 
+               <% } %>
+            </ul>
+         </section>
+         <h1>test</h1>
+         <h3>test</h3>
+      </section>
+   </section>
+
+   <section></section>
    <ul class="organization flex">
-      <li class="flex user">
-         <span class="picContainer"
-            ><img src="<%= bossData.image %>" alt="" class="pic"
-         /></span>
-         <section class="flex">
-            <span><%= bossData.firstName %> <%= bossData.lastName %></span>
-            <span><%= bossData.title %></span>
-         </section>
-      </li>
-      <div class="reportsTo flex">
-         <div class="line"></div>
-      </div>
-      <h3 class="reports">Reports To</h3>
-      <li class="flex user">
-         <span class="picContainer"
-            ><img src="<%= user.image %>" alt="" class="pic"
-         /></span>
-         <section class="flex">
-            <span><%= user.firstName %> <%= user.lastName %></span>
-            <span>
-               <% if (user.title === undefined) { %> ""  <% } else { %> <%= user.title
-               %> <% } %>
-            </span>
-         </section>
-      </li>
-      <div class="reportsTo flex">
+      <!-- <div class="reportsTo flex">
          <div class="line"></div>
       </div>
       <h3 class="reports">Crew Supervisors</h3>
@@ -121,7 +155,7 @@
                </ul>
             </ul>
          </ul>
-      </li>
+      </li> -->
    </ul>
    <section class="employeeSummary">
       <h1>Employee summary</h1>

@@ -936,16 +936,24 @@ p {
 /******************************************
 /* TEAM.EJS
 /*******************************************/
-.team {
+/* .team {
    justify-content: space-between;
    margin: 2rem 0;
-}
-.organization {
+} */
+.team {
    width: 50%;
-   height: 65rem;
+}
+.top {
    flex-direction: column;
    justify-content: flex-start;
-   align-items: center;
+   align-items: flex-start;
+}
+.empAndBoss {
+   width: 100%;
+   justify-content: space-between;
+}
+.team {
+   flex-direction: column;
 }
 .user {
    width: 27rem;

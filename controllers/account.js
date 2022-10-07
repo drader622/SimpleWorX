@@ -57,7 +57,7 @@ module.exports = {
     },
     updateEmploymentInfo: async (req, res) => {
         try {
-            let empTitle = req.body.title[0];
+            let empTitle = req.body.title[2];
             if (empTitle === '') { empTitle = req.body.title[1] };
 
             let empCrew = req.body.crew[0];
@@ -68,13 +68,26 @@ module.exports = {
                     title: req.body.department,
                     title: empTitle,
                     compensation: req.body.compensation,
-                    // supervisor: req.body.supervisor,
                     crew: empCrew,
                 }
             }, {
                 sort: { _id: -1 },
                 upsert: true
-            })
+            });
+            if (empTitle === 'Supervisor') {
+                const bossData = await User.find({ department: req.body.department, title: 'Manager' });
+                await User.updateOne({ _id: req.user._id }, {
+                    $set: {
+                        directReport: bossData[0]._id
+                    }
+                })
+            } else if (empTitle === 'Manager') {
+                await User.updateMany({ department: req.body.department, title: 'Supervisor' }, {
+                    $set: {
+                        directReport: req.user._id
+                    }
+                })
+            }
             res.redirect('/account');
         } catch (err) {
             console.log(err);
