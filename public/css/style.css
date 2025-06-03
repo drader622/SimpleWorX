@@ -55,7 +55,7 @@ html {
    justify-content: center;
 }
 .hidden {
-   display: none;
+   display: none !important;
 }
 .disabled {
    cursor: default !important;
@@ -753,14 +753,42 @@ p {
 /*******************************************/
 .optionsContainer {
    max-width: 100%;
-   align-items: center;
+   flex-direction: column;
 }
 .optionsContainer h2 {
    margin: 1rem 0.5rem 1rem 1.5rem;
 }
 .createWOMain {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   margin-top: 5rem;
+}
+.createWOContainer {
+   flex-direction: column;
+   text-align: center;
+   width: 50rem;
+   color: rgb(132, 149, 180);
+   padding: 30px 40px;
+   border-radius: 15px;
+   background: rgb(6, 23, 59);
+}
+.createWOContainer h1 {
+   font-size: 4rem;
+   margin: 0;
+}
+
+.createWOContainer select {
+   width: 100%;
    height: 100%;
-   margin-top: 3rem;
+   background: transparent;
+   border: none;
+   outline: none;
+   border-radius: 5px;
+   color: rgb(132, 149, 180);
+   border: 2px solid rgb(132, 149, 180);
+   font-size: 16px;
+   padding: 10px;
 }
 .createWOMain h2 {
    font-size: 2rem;
@@ -770,42 +798,40 @@ p {
    overflow-y: auto;
 }
 .createWOMain select {
-   height: 2.5rem;
    font-size: 1.5rem;
-   border: 1px solid black;
+   border: 1px solid rgb(132, 149, 180);
 }
 .createWOMain .machine select {
    margin: 0 0.5rem;
 }
-.createWOMain option {
-   width: 10rem;
-   font-size: 2rem;
-   border: none;
-   padding: 0;
-}
+
 .createWOMain textarea {
-   height: 15rem;
-   width: 35rem;
-   font-size: 2rem;
-   border: 1px solid black;
+   width: 100%;
+   height: 100%;
+   background: transparent;
+   border: none;
+   outline: none;
+   border-radius: 5px;
+   color: rgb(132, 149, 180);
+   border: 2px solid rgb(132, 149, 180);
+   font-size: 16px;
+   padding: 10px;
 }
 .createWOMain button {
+   width: 100%;
    display: block;
    font-size: 2.5rem;
    color: rgb(132, 149, 180);
    cursor: pointer;
    background: rgb(6, 23, 59);
    padding: 1rem;
-   border: none;
+   border: 1px solid rgb(132, 149, 180);
    border-radius: 1rem;
    margin: 1rem auto;
 }
 .createWOMain button:hover {
-   color: rgb(255, 255, 255);
+   color: rgb(244, 245, 247);
    background: rgb(31, 54, 99);
-}
-.createWOMain .description {
-   margin-top: 2rem;
 }
 
 @media all and (max-width: 390px) {
@@ -1074,7 +1100,7 @@ p {
    color: rgb(132, 149, 180);
    padding: 30px 40px;
    border-radius: 15px;
-   background: rgba(5, 5, 5, 0.7);
+   background: rgb(6, 23, 59);
 }
 .loginContainer span {
    font-size: 1.8rem;
@@ -1121,23 +1147,21 @@ p {
    margin: 10px 0;
 }
 
-.signUp select {
+.signUp option {
    color: rgb(6, 23, 59);
 }
 
 .loginBtn {
    width: 100%;
-   height: 40px;
+   display: block;
+   font-size: 2.5rem;
+   color: rgb(6, 23, 59);
    cursor: pointer;
-   background: rgb(6, 23, 59);
-   color: rgb(132, 149, 180);
-   border: none;
-   outline: none;
-   border-radius: 20px;
-   font-size: 15px;
-   font-weight: 600;
-   transition: 0.5s;
-   margin-top: 20px;
+   background: rgb(132, 149, 180);
+   padding: 1rem;
+   border: 1px solid rgb(132, 149, 180);
+   border-radius: 1rem;
+   margin: 1rem auto;
 }
 
 .loginBtn:hover {
@@ -1161,7 +1185,7 @@ p {
    text-decoration: underline;
 }
 
-.forgot h1{
+.forgot h1 {
    font-size: 3rem;
 }
 

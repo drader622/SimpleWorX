@@ -1,55 +1,58 @@
 <%- include('partials/header') -%>
 <main class="mainContainer createWOMain flex">
-   <form action="/workOrders/createWorkOrder" method="POST">
-      <div class="optionsContainer flex">
-         <div>
-            <h2>Select Module</h2>
-            <select name="module" id="mod">
-               <option value="Module 1">Mod 1</option>
-               <option value="Module 2">Mod 2</option>
-               <option value="Module 3">Mod 3</option>
-               <option value="Module 4">Mod 4</option>
-               <option value="Module 5">Mod 5</option>
-               <option value="Module 6">Mod 6</option>
-               <option value="Module 7">Mod 7</option>
-               <option value="Module 8">Mod 8</option>
-            </select>
-         </div>
-         <div>
-            <h2>Select Machine</h2>
-            <div class="machine flex">
-               <select name="machine" id="mach">
-                  <option value="Shell Press">Shell Press</option>
-                  <option value="Balancer">Balancer</option>
-                  <option value="Liner">Liner</option>
-                  <option value="Conversion Press">Conversion Press</option>
-                  <option value="Autobagger">Autobagger</option>
-               </select>
-               <select name="machNum" id="machNum">
-                  <option value="1">11</option>
+   <section class="createWOContainer darkMode">
+      <h1>Create Work Order</h1>
+      <form action="/workOrders/createWorkOrder" method="POST">
+         <div class="optionsContainer flex">
+            <div>
+               <h2>Select Module</h2>
+               <select name="module" id="mod">
+                  <option value="Module 1">Mod 1</option>
+                  <option value="Module 2">Mod 2</option>
+                  <option value="Module 3">Mod 3</option>
+                  <option value="Module 4">Mod 4</option>
+                  <option value="Module 5">Mod 5</option>
+                  <option value="Module 6">Mod 6</option>
+                  <option value="Module 7">Mod 7</option>
+                  <option value="Module 8">Mod 8</option>
                </select>
             </div>
+            <div>
+               <h2>Select Machine</h2>
+               <div class="machine flex">
+                  <select name="machine" id="mach">
+                     <option value="Shell Press">Shell Press</option>
+                     <option value="Balancer">Balancer</option>
+                     <option value="Liner">Liner</option>
+                     <option value="Conversion Press">Conversion Press</option>
+                     <option value="Autobagger">Autobagger</option>
+                  </select>
+                  <select name="machNum" id="machNum">
+                     <option value="1">11</option>
+                  </select>
+               </div>
+            </div>
          </div>
-      </div>
-      <h2>Select Help Needed</h2>
-      <select name="shop" id="reqDept">
-         <option class="option" value="Lead">Lead</option>
-         <option value="Electrical">Electrical</option>
-         <option value="Machine Shop">Machine Shop</option>
-         <option value="Millwright">Millwright</option>
-         <option value="Warehouse">Warehouse</option>
-      </select>
-      <div class="description">
-         <h2>Problem Description</h2>
-         <textarea
-            name="probDetail"
-            id="probDetail"
-            cols="15"
-            rows="10"
-         ></textarea>
-         <button id="woRequest darkMode">Submit</button>
-      </div>
-   </form>
+         <h2>Select Help Needed</h2>
+         <select name="shop" id="reqDept">
+            <option class="option" value="Lead">Lead</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Machine Shop">Machine Shop</option>
+            <option value="Millwright">Millwright</option>
+            <option value="Warehouse">Warehouse</option>
+         </select>
+         <div class="description">
+            <h2>Problem Description</h2>
+            <textarea
+               name="probDetail"
+               id="probDetail"
+               cols="15"
+               rows="10"
+            ></textarea>
+            <button id="woRequest darkMode">Submit</button>
+         </div>
+      </form>
+   </section>
 </main>
 
 <script type="text/javascript" src="js/create.js"></script>
