@@ -32,6 +32,7 @@
       "passport": "^0.6.0",
       "passport-local": "^1.0.0",
       "pusher": "^5.1.0-beta",
+      "simpleworx": "file:",
       "validator": "^13.6.0"
    },
    "devDependencies": {

@@ -4,6 +4,8 @@ const validator = require('validator');
 const User = require('../models/User');
 const Department = require('../models/Department')
 
+const currentUser = '';
+
 exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/workOrders')
@@ -48,6 +50,69 @@ exports.logout = (req, res) => {
     req.user = null
     res.redirect('/')
   })
+}
+
+exports.getForgotPassword = async (req, res) => {
+  if (req.user) {
+    return res.redirect('/workOrders')
+  }
+  res.render('forgot', {
+    title: 'Forgot Password',
+    user: req.user,
+    userFound: false,
+  })
+}
+
+exports.postNewPassword = async (req, res, next) => {
+  await User.findOne({ email: req.params.email.toLowerCase() }, (err, user) => {
+    if (user) {
+      const currUser = user;
+      console.log(`current password: ${currUser.password}`);
+      currUser.password = req.body.password;
+      currUser.hashNewPassword((err, newPassword) => {
+        currUser.password = newPassword;
+        console.log(`new password: ${currUser.password}`)
+
+        updateUser(currUser);
+
+        req.logIn(currUser, (err) => {
+          if (err) {
+            return next(err)
+          }
+          res.redirect('/workOrders')
+        })
+      })
+    }
+  })
+
+}
+
+exports.getFindUser = async (req, res) => {
+  const validationErrors = [];
+  if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
+  req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+  User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
+    if (user) {
+      console.log(user);
+      res.render('forgot', {
+        title: 'Forgot Password',
+        user: req.user,
+        userFound: true,
+        email: user.email,
+      })
+    } else {
+      validationErrors.push({ msg: 'No account found with that email address.' })
+    }
+    if (validationErrors.length) {
+      req.flash('errors', validationErrors);
+      res.render('forgot', {
+        title: 'Forgot Password',
+        user: req.user,
+        userFound: false,
+        email: '',
+      })
+    }
+  });
 }
 
 exports.getSignup = async (req, res) => {
@@ -106,4 +171,15 @@ exports.postSignup = async (req, res, next) => {
       })
     })
   })
+}
+
+updateUser = async (req, res) => {
+  await User.updateOne({ _id: req.id }, {
+    $set: {
+      password: req.password,
+    }
+  }, {
+    sort: { _id: -1 },
+    upsert: true
+  });
 }

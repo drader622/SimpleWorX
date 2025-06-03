@@ -12,5 +12,8 @@ router.post('/login', authController.postLogin);
 router.get('/logout', authController.logout);
 router.get('/signup', authController.getSignup);
 router.post('/signup', upload.single("file"), authController.postSignup);
+router.get('/forgotPassword', authController.getForgotPassword);
+router.post('/forgotPassword/:email', authController.postNewPassword);
+router.post('/getUser', authController.getFindUser);
 
 module.exports = router;
