@@ -1,33 +1,41 @@
 <%- include('partials/header') -%>
-<section class="forgot main mainContainer">
-   <h1 class="centered">Forgot Password</h1>
+<section class="forgot main flex loginMain">
    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
    <div class="alert alert-danger"><%= el.msg %></div>
    <% }) %> <% } %> <% if (!userFound) { %>
-   <form class="flex" action="/getUser" method="POST">
-      <input type="text" name="email" placeholder="Email" />
-      <button type="submit">Find User</button>
-   </form>
+   <section class="loginContainer flex darkMode">
+      <h1>Forgot Password</h1>
+      <form class="flex" action="/getUser" method="POST">
+         <div class="input-box">
+            <input type="text" name="email" placeholder="Email" />
+         </div>
+
+         <button type="submit" class="loginBtn">Find User</button>
+      </form>
+   </section>
+
    <% } %> <% if (userFound) { %>
-   <form
-      class="flex"
-      action="/forgotPassword/<%= email %>"
-      method="POST"
-   >
-      <h3>Enter New Password</h3>
-      <span name="email">Email: <%= email %></span>
-      <input
-         type="password"
-         name="password"
-         placeholder="New Password"
-      />
-      <input
-         type="password"
-         name="confirmPassword"
-         placeholder="Confirm Password"
-      />
-      <button type="submit">Submit</button>
-   </form>
+   <section class="loginContainer flex darkMode">
+      <form class="flex" action="/forgotPassword/<%= email %>" method="POST">
+         <h1>Enter New Password</h1>
+         <span name="email">Account Email: <%= email %></span>
+         <div class="input-box">
+            <input type="password" name="password" placeholder="New Password" />
+         </div>
+         <div class="input-box">
+            <input
+               type="password"
+               name="confirmPassword"
+               placeholder="Confirm Password"
+            />
+         </div>
+
+         <button type="submit" class="loginBtn">Submit</button>
+      </form>
+      <section class="loginLinks">
+         <a href="/login">Log In</a>
+      </section>
+   </section>
    <% } %>
 </section>
 

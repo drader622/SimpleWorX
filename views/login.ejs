@@ -1,23 +1,27 @@
 <%- include('partials/header') -%>
-<section class="main flex">
-   <% if (locals.messages.errors) { %> 
-      <% messages.errors.forEach( el => { %>
-         <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> 
-   <% } %> 
-   <% if (locals.messages.info) { %> 
-      <% messages.info.forEach(el => { %>
-         <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> 
-   <% } %>
-   <section>
-      <form action="/login" method="POST" class="flex">
-         <input type="email" name="email" placeholder="Email" />
-         <input type="password" name="password" placeholder="Password" />
-         <input type="submit" />
+<section class="main flex loginMain">
+   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+   <div class="alert alert-danger"><%= el.msg %></div>
+   <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+   messages.info.forEach(el => { %>
+   <div class="alert alert-danger"><%= el.msg %></div>
+   <% }) %> <% } %>
+   <section class="loginContainer flex darkMode">
+      <h1>Log In</h1>
+      <form action="/login" method="POST" class="flex loginForm">
+         <div class="input-box">
+            <input type="email" name="email" placeholder="Email" />
+         </div>
+         <div class="input-box">
+            <input type="password" name="password" placeholder="Password" />
+         </div>
+
+         <button type="submit" class="loginBtn">Login</button>
       </form>
-      <a href="/signup">Sign Up</a>
-      <a href="/forgotPassword">Forgot Password</a>
+      <section class="loginLinks">
+         <a href="/signup">Sign Up</a>
+         <a href="/forgotPassword">Forgot Password</a>
+      </section>
    </section>
 </section>
 <%- include('partials/footer') -%>

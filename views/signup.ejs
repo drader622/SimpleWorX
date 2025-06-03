@@ -1,33 +1,64 @@
 <%- include('partials/header') -%>
-<section class="signUp main flex mainContainer">
+<section class="signUp main flex loginMain">
    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
    <div class="alert alert-danger"><%= el.msg %></div>
    <% }) %> <% } %>
-   <form
-      class="flex"
-      action="/signup"
-      enctype="multipart/form-data"
-      method="POST"
-   >
-      <input type="text" name="firstName" id="firstName" placeholder="First Name"/>
-      <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
-      <select name="department" id="">
-         <% for (let i = 0; i < departments.length; i++) { %>
-            <option value="<%= departments[i].deptName %>"><%= departments[i].deptName %></option>
-         <% } %>
-      </select>
-      <!-- <input type="text" name="department" placeholder="Department" /> -->
-      <!-- <input type="text" name="title" placeholder="Job Title" /> -->
-      <input type="text" name="userName" placeholder="User Name" />
-      <input type="email" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
-      <input
-         type="password"
-         name="confirmPassword"
-         placeholder="Confirm Password"
-      />
-      <button type="submit">Submit</button>
-   </form>
+   <section class="loginContainer darkMode">
+      <h1>Sign Up</h1>
+      <span class="loginLinks">Already have an account? <a href="/login">Sign In</a></span>
+      <form
+         class="flex"
+         action="/signup"
+         enctype="multipart/form-data"
+         method="POST"
+      >
+         <div class="input-box">
+            <input
+               type="text"
+               name="firstName"
+               id="firstName"
+               placeholder="First Name"
+            />
+         </div>
+         <div class="input-box">
+            <input
+               type="text"
+               name="lastName"
+               id="lastName"
+               placeholder="Last Name"
+            />
+         </div>
+
+         <div class="input-box">
+            <select name="department" id="">
+               <% for (let i = 0; i < departments.length; i++) { %>
+               <option value="<%= departments[i].deptName %>">
+                  <%= departments[i].deptName %>
+               </option>
+               <% } %>
+            </select>
+         </div>
+
+         <div class="input-box">
+            <input type="text" name="userName" placeholder="User Name" />
+         </div>
+         <div class="input-box">
+            <input type="email" name="email" placeholder="Email" />
+         </div>
+         <div class="input-box">
+            <input type="password" name="password" placeholder="Password" />
+         </div>
+         <div class="input-box">
+            <input
+               type="password"
+               name="confirmPassword"
+               placeholder="Confirm Password"
+            />
+         </div>
+
+         <button type="submit" class="loginBtn">Submit</button>
+      </form>
+   </section>
 </section>
 <!-- <script type="text/javascript" src="js/signup.js"></script> -->
 <%- include('partials/footer') -%>

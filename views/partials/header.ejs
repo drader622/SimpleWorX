@@ -57,7 +57,7 @@
             <img class="logo" src="/images/default-monochrome.svg" alt="">
             </img>
             <% if (user !== undefined) { %>            
-               <section class="flex">
+               <section class="flex loggedInEmployee">
                   <section class="container flex">
                      <span><%= user.firstName %> <%= user.lastName %></span>
                      <span><%= user.title %></span>
@@ -69,11 +69,9 @@
                   <a href="/logout" class="darkMode logout">Logout</a>
                </section>
             <% } else { %>
-               <section class="flex">
-                  <a href="/" class="darkMode"><i class="fa-solid fa-house"></i></a>
-                  <a href="/login" class="darkMode logout">Login</a>
-               </section>
+               <section class="flex loggedInEmployee"></section>
             <% } %>
+ 
             <section>
                <p>Dark Mode</p>
                <input type="checkbox" id="switch" class="checkbox" />                 

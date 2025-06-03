@@ -359,6 +359,10 @@ main {
    width: 20rem;
    height: auto;
 }
+
+.loggedInEmployee {
+   min-width: 320px;
+}
 .userPic {
    height: 8rem;
    margin: 0 2rem;
@@ -968,11 +972,14 @@ p {
    width: 27rem;
    justify-content: flex-start;
    border: 1px solid black;
-   margin: 1rem 0;
+   color: rgb(132, 149, 180);
+   border-radius: 1rem;
+   background: rgb(6, 23, 59);
 }
 
 .member {
    cursor: pointer;
+   margin: 1rem 0;
 }
 .member:hover {
    border: 3px solid black;
@@ -983,8 +990,15 @@ p {
    margin-left: 0.5rem;
 }
 .selectedMember {
-   background: rgba(0, 0, 0, .5);
+   color: black;
+   background: rgba(0, 0, 0, 0.5);
    border: 3px solid black;
+}
+.selectedPic {
+   /* max-width: 15rem; */
+}
+.teamHeader {
+   color: rgb(75, 85, 103);
 }
 .picContainer {
    height: 7rem;
@@ -1047,290 +1061,110 @@ p {
 /******************************************
 /* LOGIN.EJS
 /*******************************************/
-.signUp, .forgot {
-   height: 50rem;
+.loginMain {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   margin-top: 5rem;
+}
+.loginContainer {
    flex-direction: column;
-   font-size: 2rem;
+   text-align: center;
+   width: 400px;
+   color: rgb(132, 149, 180);
+   padding: 30px 40px;
+   border-radius: 15px;
+   background: rgba(5, 5, 5, 0.7);
+}
+.loginContainer span {
+   font-size: 1.8rem;
+}
+.loginContainer h1 {
+   font-size: 4rem;
+}
+.loginForm {
+   flex-direction: column;
 }
 .signUp form,
 .forgot form {
    flex-direction: column;
    align-items: center;
 }
-.signUp input {
-   width: 25rem;
-   margin: .5rem;
-}
-.signUp select {
-   width: 25rem;
-}
+
 .signUp button,
 .forgot button {
    margin-top: 2rem;
 }
 
-/* .disabled {
-   background: gray;
-   pointer-events: none;
-} */
-/* .accountInfoMain h1 {
-   font-size: 2.5rem;
-   margin: 1rem auto;
-} */
-/* .accountInfoMain section {
-   width: 20rem;
-   flex-direction: column;
-} */
-/* .accountInfoMain .job,
-.accountInfoMain .crew {
-   width: 30rem;
-   flex-direction: row;
-} */
-/* .accountInfoMain h2 {
-   font-size: 2rem;
-   margin: 0;
-} */
-/* .accountInfoMain input {
-   height: 2.5rem;
-   font-size: 1.5rem;
-   color: white;
-   background: rgb(155, 155, 155);
-   padding-left: 0.5rem;
-   margin-bottom: 2rem;
-   border: none;
-} */
-/* .accountInfoMain .crewInput,
-.accountInfoMain .payInput {
-   margin-left: 1rem;
-} */
-/* .accountInfoMain .crewInput input,
-.accountInfoMain .payInput input {
-   width: 8rem;
-   font-size: 1.5rem;
-} */
-
-/* @media all and (max-width: 1080px) {
-
-}
-@media all and (max-width: 730px) {
-
-}
-@media all and (max-width: 500px) {
-
-} */
-
-/* CREATE WO MAIN */
-/*
-.createWOMain h1 {
-   font-size: 2.5rem;
-   margin-bottom: 0;
-}
- */
-
-/* ACCOUNT INFO MAIn */
-/* .accountInfoMain {
-   height: 70rem;
-   width: 70%;
-   flex-direction: column;
-   padding-bottom: 1rem;
-   margin: 0 auto;
-   margin-top: -5.5rem;
-}
-.accountInfoMain h1 {
-   font-size: 2.5rem;
-   margin: 1rem auto;
-}
-.accountInfoMain section {
-   width: 20rem;
-   flex-direction: column;
-}
-.accountInfoMain .job,
-.accountInfoMain .crew {
-   width: 30rem;
-   flex-direction: row;
-}
-.accountInfoMain h2 {
-   font-size: 2rem;
-   margin: 0;
-}
-.accountInfoMain input {
-   height: 2.5rem;
-   font-size: 1.5rem;
-   color: white;
-   background: rgb(155, 155, 155);
-   padding-left: 0.5rem;
-   margin-bottom: 2rem;
-   border: none;
-}
-.accountInfoMain .crewInput,
-.accountInfoMain .payInput {
-   margin-left: 1rem;
-}
-.accountInfoMain .crewInput input,
-.accountInfoMain .payInput input {
-   width: 8rem;
-   font-size: 1.5rem;
-} */
-
-/* MODULE INFO MAIN */
-/* .moduleInfoMain {
-   flex-direction: column;
-   align-items: center;
-}
-.moduleInfoMain section {
-   height: 3rem;
-   margin: 1rem;
-} */
-
-/* MESSAGES MAIN */
-/* .messagingMain,
-.messagesContainer {
+.input-box {
+   position: relative;
    width: 100%;
-   flex-direction: column;
-}
-.messagesContainer {
-   max-height: 46rem;
-   padding-top: 5rem;
-   overflow-y: auto;
-}
-.newMessageContainer {
-   border-top: 0.2rem solid rgba(0, 0, 0, 0.25);
-   padding-top: 1rem;
-}
-.newMessageContainer input {
-   height: 5rem;
-   width: 30rem;
-   font-size: 1.5rem;
-   border: none;
-}
-.newMessageContainer button {
-   height: 5rem;
-   width: 6rem;
-   font-size: 1.5rem;
-   font-weight: bold;
-   color: rgb(0, 121, 0);
-   background: rgb(255, 255, 255);
-   margin-left: 1rem;
-   border-radius: 2rem;
-   border: 0.2rem solid rgb(0, 77, 0);
-}
-.message {
-   max-width: 30rem;
-   font-size: 1.5rem;
-   padding: 1rem 1.5rem;
-   margin: 1rem;
-   border-radius: 1rem;
-}
-.user {
-   align-self: flex-end;
-   background: white;
-}
-.coworker {
-   align-self: flex-start;
-   color: rgb(0, 195, 0);
-   background: rgb(0, 77, 0);
+   height: 100%;
+   margin: 30px 0;
 }
 
-.tabs {
-   text-align: center;
+.input-box input,
+.signUp select {
+   width: 100%;
+   height: 100%;
+   background: transparent;
+   border: none;
+   outline: none;
+   border-radius: 5px;
+   color: #fff;
+   border: 2px solid rgb(132, 149, 180);
+   font-size: 16px;
+   padding: 10px;
 }
-.tabs a {
-   width: 50%;
-   font-size: 1.8rem;
-   color: rgb(0, 195, 0);
-   background: rgb(0, 77, 0);
-   border-radius: 0 1rem 1rem 0;
-   padding: 1.5rem;
+
+.signUp .input-box {
+   margin: 10px 0;
 }
-.tabs a:first-child {
-   border-radius: 1rem 0 0 1rem;
+
+.signUp select {
+   color: rgb(6, 23, 59);
 }
-main .workOrdersMain .selected,
-.footer .selected {
-   color: rgb(0, 121, 0);
-   background: white;
-   border: 3px solid rgb(0, 77, 0);
-   box-shadow: inset 0.25rem 0.25rem 0.2rem rgb(150, 150, 150),
-      inset -0.25rem -0.25rem 0.2rem rgb(150, 150, 150);
+
+.loginBtn {
+   width: 100%;
+   height: 40px;
+   cursor: pointer;
+   background: rgb(6, 23, 59);
+   color: rgb(132, 149, 180);
+   border: none;
+   outline: none;
+   border-radius: 20px;
+   font-size: 15px;
+   font-weight: 600;
+   transition: 0.5s;
+   margin-top: 20px;
 }
-#openedWorkOrders {
-   overflow-y: auto;
-} */
+
+.loginBtn:hover {
+   color: rgb(244, 245, 247);
+   background: rgb(31, 54, 99);
+}
+.loginLinks {
+   margin: 2rem 0;
+}
+.loginLinks a {
+   font-size: 1.6rem;
+   text-decoration: none;
+   margin: 2rem;
+}
+.signUp .loginLinks a {
+   margin: 0;
+   text-decoration: underline;
+}
+.loginLinks a:hover {
+   color: white;
+   text-decoration: underline;
+}
+
+.forgot h1{
+   font-size: 3rem;
+}
 
 /******************************************
 /* FOOTER
 /*******************************************/
-/* .footer {
-   width: 100%;
-   flex-direction: column;
-   margin-bottom: -1.5rem;
-}
-.footer .workOrdersMain {
-   margin: 0;
-}
-.footer ul {
-   width: 100%;
-   align-items: center;
-   justify-content: center;
-   padding: 0;
-   margin: 0;
-}
-.footer li {
-   height: 75px;
-   width: auto;
-   display: inline;
-   font-size: 4rem;
-   text-align: center;
-   background: rgb(0, 77, 0);
-   padding: 0 2rem 0 2rem;
-   cursor: pointer;
-}
-.footer li:hover {
-   background: transparent;
-   color: white;
-   border-top: 0.3rem solid rgb(0, 77, 0);
-}
-.footer a {
-   color: rgb(0, 195, 0);
-   margin: 0 0 1.5rem;
-} */
-
-@media screen and (min-width: 400px) {
-   /* .bottom {
-      height: 65%;
-      position: fixed;
-      top: 25rem;
-
-      border: 1px solid blue;
-   } */
-   /* .bottom .footer ul {
-      width: 100%;
-   } */
-   /* .footer li {
-      width: 20%;
-   } */
-
-   /* .woRequestMain {
-      max-height: 39rem;
-      margin: 0 .5rem;
-      padding: 0;
-   } */
-   /* .woRequestMain .info {
-      overflow-y: auto;
-   } */
-
-   /* .workOrdersMain .container {
-      max-height: 29rem;
-   } */
-   /* 
-   .footer {
-      display: block;
-   }
-
-
-   .footer li:hover {
-      background: transparent;
-      color: white;
-      border-top: 0.3rem solid rgb(0, 77, 0);
-   } */
-}

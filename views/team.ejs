@@ -3,10 +3,10 @@
    <section class="team flex">
       <section class="top flex">
          <section>
-            <h1>Department Head</h1>
+            <h1 class="teamHeader">Department Head</h1>
          </section>
          <section class="boss flex">
-            <section class="flex user">
+            <section class="flex user darkMode">
                <span class="picContainer"
                   ><img src="<%= bossData.image %>" alt="" class="pic"
                /></span>
@@ -21,11 +21,11 @@
       </section>
       <section>
          <section class="department">
-            <h1 class="centered">Department Employees</h1>
+            <h1 class="centered teamHeader">Department Employees</h1>
             <ul class="flex">
                <% for (let i = 0; i < deptEmployees.length; i++) { %> 
                   <% if (deptEmployees[i].title !== 'Supervisor' && deptEmployees[i].title !== 'Manager') { %>
-                     <li class="flex user member">
+                     <li class="flex user member darkMode">
                         <span class="picContainer"
                            ><img src="<%= deptEmployees[i].image %>" alt="" class="pic empImage"
                         /></span>
@@ -41,9 +41,9 @@
       </section>
    </section>
    <section class="employeeSummary flex">
-      <h1>Employee summary</h1>
-      <section class="flex user selectedEmployee">
-         <span class="picContainer" id="selectedImage"><img src="<%= user.image %>" alt="" class="pic"/></span>
+      <h1 class="teamHeader">Employee summary</h1>
+      <section class="flex user selectedEmployee darkMode">
+         <span class="picContainer" id="selectedImage"><img src="<%= user.image %>" alt="" class="pic selectedPic"/></span>
          <section class="flex selectedContainer">
             <span id="selectedName"><%= user.firstName %> <%= user.lastName %></span>
             <span id="selectedTitle">
