@@ -949,12 +949,17 @@ p {
 }
 .top {
    flex-direction: column;
-   justify-content: flex-start;
-   align-items: flex-start;
+   align-items: center;
 }
-.empAndBoss {
+/* .boss {
    width: 100%;
    justify-content: space-between;
+} */
+.department ul,
+.boss {
+   flex-direction: column;
+   align-items: center;
+   padding: 0;
 }
 .team {
    flex-direction: column;
@@ -963,11 +968,23 @@ p {
    width: 27rem;
    justify-content: flex-start;
    border: 1px solid black;
+   margin: 1rem 0;
+}
+
+.member {
+   cursor: pointer;
+}
+.member:hover {
+   border: 3px solid black;
 }
 .user section {
    flex-direction: column;
    font-size: 1.4rem;
    margin-left: 0.5rem;
+}
+.selectedMember {
+   background: rgba(0, 0, 0, .5);
+   border: 3px solid black;
 }
 .picContainer {
    height: 7rem;
@@ -1005,6 +1022,26 @@ p {
 }
 .leads .user {
    margin-bottom: 1rem;
+}
+.employeeSummary {
+   flex-direction: column;
+   align-items: center;
+   /* border: 1px solid black; */
+}
+.selectedEmployee {
+   width: 50rem;
+   flex-direction: column;
+   align-items: center;
+   border: 1px solid black;
+   padding: 2rem;
+}
+
+.selectedContainer {
+   font-size: 1.8rem !important;
+}
+
+#selectedImage {
+   height: 20rem;
 }
 
 /******************************************

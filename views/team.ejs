@@ -3,9 +3,9 @@
    <section class="team flex">
       <section class="top flex">
          <section>
-            <h1>Direct Report</h1>
+            <h1>Department Head</h1>
          </section>
-         <section class="empAndBoss flex">
+         <section class="boss flex">
             <section class="flex user">
                <span class="picContainer"
                   ><img src="<%= bossData.image %>" alt="" class="pic"
@@ -17,148 +17,45 @@
                   <span><%= bossData.title %></span>
                </section>
             </section>
-            <section class="flex user">
-               <span class="picContainer"
-                  ><img src="<%= user.image %>" alt="" class="pic"
-               /></span>
-               <section class="flex">
-                  <span><%= user.firstName %> <%= user.lastName %></span>
-                  <span>
-                     <% if (user.title === undefined) { %> "" <% } else { %> <%=
-                     user.title %> <% } %>
-                  </span>
-               </section>
-            </section>
          </section>
       </section>
       <section>
-         <button>Department</button>
-         <button>Crew</button>
-      </section>
-      <section>
          <section class="department">
-            <h1>Department Employees</h1>
-            <ul>
+            <h1 class="centered">Department Employees</h1>
+            <ul class="flex">
                <% for (let i = 0; i < deptEmployees.length; i++) { %> 
                   <% if (deptEmployees[i].title !== 'Supervisor' && deptEmployees[i].title !== 'Manager') { %>
-                     <li class="flex user">
+                     <li class="flex user member">
                         <span class="picContainer"
-                           ><img src="<%= deptEmployees[i].image %>" alt="" class="pic"
+                           ><img src="<%= deptEmployees[i].image %>" alt="" class="pic empImage"
                         /></span>
                         <section>
-                           <span><%= deptEmployees[i].firstName %> <%= deptEmployees[i].lastName %></span>
+                           <span id="empName"><%= deptEmployees[i].firstName %> <%= deptEmployees[i].lastName %></span></br>
+                           <span id="empTitle"><%= deptEmployees[i].title %></span>
                         </section>
                      </li>
                   <% } %> 
                <% } %>
             </ul>
          </section>
-         <h1>test</h1>
-         <h3>test</h3>
       </section>
    </section>
-
-   <section></section>
-   <ul class="organization flex">
-      <!-- <div class="reportsTo flex">
-         <div class="line"></div>
-      </div>
-      <h3 class="reports">Crew Supervisors</h3>
-      <li class="supervisors flex">
-         <ul class="supervisors flex">
-            <ul class="canDept">
-               <li class="flex user">
-                  <span class="picContainer"
-                     ><img src="\images\headshot.png" alt="" class="pic"
-                  /></span>
-                  <section class="flex">
-                     <span>Danielle Rader</span>
-                     <span>Electronic Technician</span>
-                  </section>
-               </li>
-               <div class="reportsTo flex">
-                  <div class="line"></div>
-               </div>
-               <h3 class="reports">Dept Leads</h3>
-               <ul class="leads">
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-               </ul>
-            </ul>
-            <ul class="endDept">
-               <li class="flex user">
-                  <span class="picContainer"
-                     ><img src="\images\headshot.png" alt="" class="pic"
-                  /></span>
-                  <section class="flex">
-                     <span>Danielle Rader</span>
-                     <span>Engineer - Manufacturing III</span>
-                  </section>
-               </li>
-               <div class="reportsTo flex">
-                  <div class="line"></div>
-               </div>
-               <h3 class="reports">Dept Leads</h3>
-               <ul class="leads">
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-                  <li class="flex user">
-                     <span class="picContainer"
-                        ><img src="\images\headshot.png" alt="" class="pic"
-                     /></span>
-                     <section class="flex">
-                        <span>Danielle Rader</span>
-                        <span>Electronic Technician</span>
-                     </section>
-                  </li>
-               </ul>
-            </ul>
-         </ul>
-      </li> -->
-   </ul>
-   <section class="employeeSummary">
+   <section class="employeeSummary flex">
       <h1>Employee summary</h1>
+      <section class="flex user selectedEmployee">
+         <span class="picContainer" id="selectedImage"><img src="<%= user.image %>" alt="" class="pic"/></span>
+         <section class="flex selectedContainer">
+            <span id="selectedName"><%= user.firstName %> <%= user.lastName %></span>
+            <span id="selectedTitle">
+               <% if (user.title === undefined) { %> "" <% } else { %> <%=
+               user.title %> <% } %>
+            </span>
+            <span id="selectedCrew"><%= user.crew %> Crew</span>
+            <span id="selectedEmail"><%= user.email %></span>
+         </section>
+      </section>
    </section>
 </main>
+
+<script type="text/javascript" src="js/team.js"></script>
 <%- include('partials/footer') -%>
