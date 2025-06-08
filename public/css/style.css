@@ -223,7 +223,6 @@ a {
    }
    .nav li {
       font-size: 3rem;
-      /* background: rgb(132, 149, 180); */
    }
    .nav a {
       color: rgb(6, 23, 59);
@@ -237,7 +236,7 @@ a {
       position: relative;
       top: 1.3rem;
       left: 2.5rem;
-      margin: 1rem;
+      margin: 4rem 0 0 3rem;
    }
    #listToggle a {
       text-decoration: none;
@@ -297,7 +296,7 @@ a {
       position: absolute;
       width: 11rem;
       top: 8rem;
-      left: -13rem;
+      left: -15rem;
 
       text-align: center;
       list-style: none;
@@ -340,7 +339,6 @@ main {
    font-size: 1.5rem;
    color: rgb(132, 149, 180);
    background: rgb(6, 23, 59);
-   /* background: rgb(6, 13, 59); */
    border-radius: 1rem;
    padding-right: 1rem;
    margin: 1rem 0 0 0;
@@ -353,7 +351,6 @@ main {
    flex-direction: column;
    align-items: flex-end;
    text-decoration: none;
-   /* color: rgb(132, 149, 180); */
 }
 .logo {
    width: 20rem;
@@ -361,7 +358,7 @@ main {
 }
 
 .loggedInEmployee {
-   min-width: 320px;
+   min-width: 290px;
 }
 .userPic {
    height: 8rem;
@@ -400,7 +397,6 @@ p {
    background-color: gray;
    top: -1px;
    left: -1px;
-   transition: all 0.5s;
 }
 
 /* Checkbox checked effect */
@@ -419,6 +415,11 @@ p {
 }
 
 @media all and (max-width: 1080px) {
+   .mainContainer {
+      height: 80rem;
+      margin: 0;
+      overflow: auto;
+   }
 }
 @media all and (max-width: 820px) {
    .mainContainer {
@@ -428,9 +429,7 @@ p {
       margin: 1rem 0 0 0;
    }
    .logo {
-      width: 15rem;
-      padding-top: 1.5rem;
-      margin: 1.5rem 1rem;
+      display: none;
    }
 }
 @media all and (max-width: 600px) {
@@ -444,12 +443,42 @@ p {
       margin: 0.5rem;
    }
 }
-@media all and (max-width: 500px) {
+@media all and (max-width: 540px) {
    .employee .container {
       font-size: 0.8rem;
    }
    .navButtons {
-      left: -11rem;
+      left: -15rem;
+   }
+   .employeDetails {
+      display: none;
+   }
+   .darkText {
+      width: 105%;
+      font-size: 1rem;
+   }
+   .toggle {
+      height: 2rem;
+      width: 5rem;
+   }
+   .toggle:after {
+      height: 1.8rem;
+      width: 2rem;
+   }
+   .checkbox:checked + .toggle:after {
+      left: 2.7rem;
+   }
+   .loggedInEmployee {
+      justify-content: center;
+   }
+   .userPic {
+      margin-right: 1rem;
+   }
+}
+
+@media all and (max-width: 400px) {
+   .navButtons {
+      left: -13rem;
    }
 }
 
@@ -524,6 +553,9 @@ p {
 .selected {
    background: rgb(31, 54, 99);
 }
+.selected .darkMode {
+   background: white;
+}
 
 .request span {
    width: 22rem;
@@ -576,6 +608,9 @@ p {
       font-size: 1rem;
       margin: 0.5rem;
    }
+   .workOrders {
+      height: 45rem;
+   }
 }
 @media all and (max-width: 500px) {
    .sortOptions {
@@ -585,9 +620,6 @@ p {
 @media all and (max-width: 390px) {
    .sort h3 {
       font-size: 1rem;
-   }
-   .workOrders {
-      height: 15rem;
    }
 }
 
@@ -600,6 +632,7 @@ p {
 }
 .buttonsContainer {
    flex-direction: column;
+   align-items: center;
    margin: 2rem 0;
 }
 .buttonsContainer a,
@@ -694,6 +727,25 @@ p {
    background: red;
 }
 
+.backBtn {
+   height: 4rem;
+   width: 14rem;
+   font-size: 1.4rem;
+   color: rgb(132, 149, 180);
+   margin-bottom: 15rem;
+   border: none;
+   background-color: rgb(6, 23, 59);
+   cursor: pointer;
+}
+.backBtn a {
+   color: rgb(132, 149, 180);
+   margin: 0;
+   padding: 0;
+}
+.backBtn i {
+   padding-right: 0.75rem;
+}
+
 @media all and (max-width: 1230px) {
    .woInfo div {
       font-size: 1.2rem;
@@ -705,6 +757,9 @@ p {
    .textDetail h2 {
       font-size: 1.2rem;
       margin: 0;
+   }
+   .detail textarea {
+      width: 20rem;
    }
    .woInfo .left,
    .woInfo .middle,
@@ -719,17 +774,27 @@ p {
       width: 190px;
    }
    .requested {
-      width: 56%;
+      width: 95%;
       justify-content: space-around;
    }
    .responded {
-      width: 43%;
+      width: 95%;
       justify-content: space-around;
    }
 }
 @media all and (max-width: 1080px) {
 }
 @media all and (max-width: 730px) {
+   .woInfo {
+      flex-direction: column;
+      margin-top: 0;
+   }
+   .buttonsContainer {
+      height: 5rem;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-evenly;
+   }
    .info {
       width: 100%;
       overflow-y: auto;
@@ -741,11 +806,22 @@ p {
    }
    .responded {
       width: 100%;
-      height: 1rem;
       padding-top: 1rem;
    }
 }
-@media all and (max-width: 500px) {
+@media all and (max-width: 540px) {
+   .button {
+      width: 8rem;
+   }
+   .backBtn {
+      width: 4rem;
+   }
+   .backBtn i {
+      padding: 0;
+   }
+   .backText {
+      display: none;
+   }
 }
 
 /******************************************
@@ -871,7 +947,6 @@ p {
    flex-direction: column;
 }
 .employmentForm .edit {
-   width: 85%;
    justify-content: flex-end;
 }
 .personal,
@@ -933,7 +1008,6 @@ p {
 }
 .editBtn {
    width: 4rem;
-   width: 4rem;
    font-size: 2rem;
    text-decoration: none;
    cursor: pointer;
@@ -965,6 +1039,81 @@ p {
 }
 .compensation {
    width: 5rem;
+}
+
+.employmentContainer {
+   justify-content: space-between;
+}
+
+@media all and (max-width: 1350px) {
+   .employment {
+      margin-top: 2rem;
+   }
+   .employmentContainer {
+      width: 75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      align-self: center;
+   }
+   .employmentForm .edit {
+      width: 75rem;
+   }
+}
+@media all and (max-width: 940px) {
+   .personalForm {
+      width: 90rem;
+   }
+   .personalForm .inputField {
+      font-size: 1rem;
+   }
+   .personalForm .edit {
+      height: 4rem;
+      align-self: flex-end;
+   }
+   .personalInfo .formInputs {
+      max-width: 500px;
+   }
+   .formInputs {
+      flex-direction: row;
+   }
+   .employmentContainer {
+      width: 75rem;
+   }
+   .employmentForm .edit {
+      width: 57rem;
+   }
+}
+@media all and (max-width: 820px) {
+   .summary {
+      display: none;
+   }
+   .employmentForm .edit {
+      height: 4rem;
+      justify-content: center;
+   }
+   .employmentContainer {
+      width: 75rem;
+   }
+}
+@media all and (max-width: 730px) {
+}
+@media all and (max-width: 560px) {
+   .personalInfo .formInputs {
+      max-width: 320px;
+   }
+   .inputField {
+      width: 13rem;
+   }
+   .employmentForm {
+      padding-bottom: 10rem;
+   }
+   .inputField input,
+   .employmentForm .container {
+      font-size: 1rem;
+   }
+}
+@media all and (max-width: 400px) {
 }
 
 /******************************************
@@ -1016,8 +1165,8 @@ p {
    margin-left: 0.5rem;
 }
 .selectedMember {
-   color: black;
-   background: rgba(0, 0, 0, 0.5);
+   color: black !important;
+   background: rgba(255, 255, 255, 0.25) !important;
    border: 3px solid black;
 }
 .selectedPic {
@@ -1082,6 +1231,37 @@ p {
 
 #selectedImage {
    height: 20rem;
+}
+
+@media all and (max-width: 1080px) {
+   .teamContainer {
+      height: 45rem;
+   }
+}
+
+@media all and (max-width: 950px) {
+   .teamContainer {
+      flex-direction: column;
+      height: 80rem;
+   }
+   .team {
+      width: 100%;
+   }
+}
+
+@media all and (max-width: 600px) {
+   .selectedEmployee {
+      width: 25rem;
+   }
+}
+
+@media all and (max-width: 400px) {
+   .teamContainer {
+      height: 77rem;
+      max-height: 52rem;
+      padding-top: 27rem;
+      overflow: auto;
+   }
 }
 
 /******************************************

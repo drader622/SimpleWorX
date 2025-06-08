@@ -1,17 +1,30 @@
 <%- include('partials/header') -%>
 <main class="mainContainer woInfo flex">
    <section class="buttonsContainer flex">
+      <button class="backBtn button">
+         <a href="/workOrders"><i class="fa-solid fa-arrow-left"></i><span class="backText">Work Orders</span></a>
+      </button>
       <form
          action="/workOrders/respondToWorkOder/<%= workOrder.id %>?_method=PUT"
          method="POST"
       >
-         <button class="respond button <%= (workOrder.respondedTo === true) ? 'disabled' : '' %>" type="submit">Respond</button>
+         <button
+            class="respond button <%= (workOrder.respondedTo === true) ? 'disabled' : '' %>"
+            type="submit"
+         >
+            Respond
+         </button>
       </form>
       <form
          action="/workOrders/closeWorkOrder/<%= workOrder.id %>?_method=PUT"
          method="POST"
       >
-         <button class="close button <%= (workOrder.status === 'closed') ? 'disabled' : '' %>" type="submit">Close</button>
+         <button
+            class="close button <%= (workOrder.status === 'closed') ? 'disabled' : '' %>"
+            type="submit"
+         >
+            Close
+         </button>
       </form>
       <form
          action="/workOrders/deleteWorkOrder/<%= workOrder.id %>?_method=DELETE"
@@ -79,7 +92,15 @@
          </section>
          <section class="detail flex">
             <h2>Solution Detail</h2>
-            <textarea name="" id="" cols="30" rows="10" class="<%= (workOrder.status === 'closed') ? 'disabled' : '' %>"><%= workOrder.solutionDetail %></textarea>
+            <textarea
+               name=""
+               id=""
+               cols="30"
+               rows="10"
+               class="<%= (workOrder.status === 'closed') ? 'disabled' : '' %>"
+            >
+<%= workOrder.solutionDetail %></textarea
+            >
          </section>
       </section>
    </section>

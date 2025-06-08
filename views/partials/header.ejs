@@ -22,7 +22,9 @@
    </head>
    <body>
       <header>
-         <nav class="nav flex">
+
+        <section class="employee darkMode flex">
+                  <nav class="nav flex">
             <div id="listToggle" class="flex">
                <input type="checkbox" />
                <span class="line"></span>
@@ -53,19 +55,20 @@
                </ul>
             </div>
          </nav>
-        <section class="employee darkMode flex">
             <img class="logo" src="/images/default-monochrome.svg" alt="">
             </img>
             <% if (user !== undefined) { %>            
                <section class="flex loggedInEmployee">
-                  <section class="container flex">
+                  <section class="container flex employeDetails">
                      <span><%= user.firstName %> <%= user.lastName %></span>
                      <span><%= user.title %></span>
                      <span><%= user.department %></span>
                   </section>
-                  <span class="userPic"
-                  ><img class="headshot" src="<%= user.image %>" alt=""
-                  /></span>
+                  <span class="userPic">
+                     <a href="/account">
+                        <img class="headshot" src="<%= user.image %>" alt=""/>
+                     </a>
+                  </span>
                   <a href="/logout" class="darkMode logout">Logout</a>
                </section>
             <% } else { %>
@@ -73,7 +76,7 @@
             <% } %>
  
             <section>
-               <p>Dark Mode</p>
+               <p class="darkText">Dark Mode</p>
                <input type="checkbox" id="switch" class="checkbox" />                 
                <label for="switch" class="toggle">
                </label>
