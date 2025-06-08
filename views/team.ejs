@@ -3,7 +3,7 @@
    <section class="team flex">
       <section class="top flex">
          <section>
-            <h1 class="teamHeader">Department Head</h1>
+            <h1 class="teamHeader"><%= bossData.department %> Head</h1>
          </section>
          <section class="boss flex">
             <section class="flex user darkMode">
@@ -21,7 +21,7 @@
       </section>
       <section>
          <section class="department">
-            <h1 class="centered teamHeader">Department Employees</h1>
+            <h1 class="centered teamHeader"><%= bossData.department %> Employees</h1>
             <ul class="flex">
                <% for (let i = 0; i < deptEmployees.length; i++) { %> 
                   <% if (deptEmployees[i].title !== 'Supervisor' && deptEmployees[i].title !== 'Manager') { %>

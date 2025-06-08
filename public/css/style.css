@@ -212,7 +212,6 @@ a {
    position: relative;
    top: -1rem;
    color: rgb(132, 149, 180);
-   /* margin: 0 0 5rem 0; */
 }
 
 @media all {
@@ -450,7 +449,7 @@ p {
    .navButtons {
       left: -15rem;
    }
-   .employeDetails {
+   .employeeDetails {
       display: none;
    }
    .darkText {
@@ -473,6 +472,12 @@ p {
    }
    .userPic {
       margin-right: 1rem;
+   }
+}
+
+@media all and (max-width: 500px) {
+   .navButtons {
+      left: -13rem;
    }
 }
 
@@ -1038,7 +1043,7 @@ p {
    padding: 0;
 }
 .compensation {
-   width: 5rem;
+   width: 6rem;
 }
 
 .employmentContainer {
@@ -1119,10 +1124,6 @@ p {
 /******************************************
 /* TEAM.EJS
 /*******************************************/
-/* .team {
-   justify-content: space-between;
-   margin: 2rem 0;
-} */
 .team {
    width: 50%;
 }
@@ -1130,9 +1131,10 @@ p {
    flex-direction: column;
    align-items: center;
 }
-/* .boss {
-   width: 100%;
-   justify-content: space-between;
+
+/* .department ul {
+   height: 50rem;
+   flex-wrap: wrap;
 } */
 .department ul,
 .boss {
@@ -1161,7 +1163,7 @@ p {
 }
 .user section {
    flex-direction: column;
-   font-size: 1.4rem;
+   font-size: 1.8rem;
    margin-left: 0.5rem;
 }
 .selectedMember {
@@ -1209,7 +1211,6 @@ p {
 .employeeSummary {
    flex-direction: column;
    align-items: center;
-   /* border: 1px solid black; */
 }
 .selectedEmployee {
    width: 50rem;
@@ -1220,7 +1221,7 @@ p {
 }
 
 .selectedContainer {
-   font-size: 1.8rem !important;
+   font-size: 1.8rem;
 }
 
 #selectedImage {
@@ -1229,14 +1230,14 @@ p {
 
 @media all and (max-width: 1080px) {
    .teamContainer {
-      height: 45rem;
+      /* height: 70rem; */
    }
 }
 
 @media all and (max-width: 950px) {
    .teamContainer {
       flex-direction: column;
-      height: 80rem;
+      justify-content: flex-start;
    }
    .team {
       width: 100%;
@@ -1247,13 +1248,15 @@ p {
    .selectedEmployee {
       width: 25rem;
    }
+   .selectedContainer {
+      font-size: 1.4rem !important;
+   }
 }
 
 @media all and (max-width: 400px) {
    .teamContainer {
-      height: 77rem;
-      max-height: 52rem;
-      padding-top: 27rem;
+      max-height: 70rem;
+      height: 100vh;
       overflow: auto;
    }
 }

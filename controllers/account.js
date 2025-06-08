@@ -8,6 +8,7 @@ module.exports = {
         const depts = await Department.find();
         let bossData;
         bossData = await User.find({ _id: req.user.directReport })
+        console.log(req.user.directReport);
         res.render('account.ejs', {
             user: req.user,
             depts: depts,
@@ -57,15 +58,17 @@ module.exports = {
     },
     updateEmploymentInfo: async (req, res) => {
         try {
-            let empTitle = req.body.title[2];
+            let empTitle = req.body.title[1];
             if (empTitle === '') { empTitle = req.body.title[1] };
 
             let empCrew = req.body.crew[0];
             if (empCrew === '') { empCrew = req.body.crew[1] };
 
+            let department = req.body.department[1];
+
             await User.updateOne({ _id: req.user._id }, {
                 $set: {
-                    title: req.body.department,
+                    department: req.body.department[1],
                     title: empTitle,
                     compensation: req.body.compensation,
                     crew: empCrew,
@@ -75,7 +78,8 @@ module.exports = {
                 upsert: true
             });
             if (empTitle === 'Supervisor') {
-                const bossData = await User.find({ department: req.body.department, title: 'Manager' });
+                const bossData = await User.find({ department: req.body.department[1], title: 'Manager' });
+
                 await User.updateOne({ _id: req.user._id }, {
                     $set: {
                         directReport: bossData[0]._id
