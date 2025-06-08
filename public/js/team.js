@@ -4,18 +4,26 @@ let selectedCrewText = document.getElementById('selectedCrew');
 let selectedImage = document.querySelector('#selectedImage img');
 let selectedEmailText = document.getElementById('selectedEmail');
 let teamMembers = document.querySelectorAll('.member');
-teamMembers.forEach(member => member.addEventListener('click', selectMember));
-teamMembers[0].classList.add('selectedMember');
+teamMembers.forEach(member => member.addEventListener('click', getSelectedMemberName));
+load();
 
-function selectMember() {
+function load() {
+    console.log(document.querySelector('.employeeDetails').children[0].innerText)
+    let selectedUserName = document.querySelector('.employeeDetails').children[0].innerText;
+    getUserInfo(selectedUserName);
+}
+
+function getSelectedMemberName() {
     resetSelected();
     this.classList.add('selectedMember');
     let selectedName = document.querySelector('.selectedMember #empName').innerText;
     selectedNameText.innerText = selectedName;
-    getUser(selectedName);
+    getUserInfo(selectedName);
+
+
 }
 
-async function getUser(memberName) {
+async function getUserInfo(memberName) {
     try {
         const response = await fetch(`/getUser/${memberName}`, {
             method: 'get',
@@ -25,14 +33,19 @@ async function getUser(memberName) {
 
         const selectedUser = await response.json();
 
-        selectedNameText.innerText = `${selectedUser.firstName} ${selectedUser.lastName}`;
-        selectedTitleText.innerText = `${selectedUser.title}`;
-        selectedCrewText.innerText = `${selectedUser.crew} Crew`;
-        selectedImage.src = `${selectedUser.image}`;
-        selectedEmailText.innerText = `${selectedUser.email}`;
+        displaySelected(selectedUser);
+
     } catch (err) {
         console.log(err);
     }
+}
+
+function displaySelected(selectedUser) {
+    selectedNameText.innerText = `${selectedUser.firstName} ${selectedUser.lastName}`;
+    selectedTitleText.innerText = `${selectedUser.title}`;
+    selectedCrewText.innerText = `${selectedUser.crew} Crew`;
+    selectedImage.src = `${selectedUser.image}`;
+    selectedEmailText.innerText = `${selectedUser.email}`;
 }
 
 function resetSelected() {

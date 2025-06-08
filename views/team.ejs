@@ -25,7 +25,7 @@
             <ul class="flex">
                <% for (let i = 0; i < deptEmployees.length; i++) { %> 
                   <% if (deptEmployees[i].title !== 'Supervisor' && deptEmployees[i].title !== 'Manager') { %>
-                     <li class="flex user member darkMode">
+                     <li class="flex user member darkMode <%= (deptEmployees[i].firstName === user.firstName) && (deptEmployees[i].lastName === user.lastName) ? 'selectedMember' : '' %>">
                         <span class="picContainer"
                            ><img src="<%= deptEmployees[i].image %>" alt="" class="pic empImage"
                         /></span>
