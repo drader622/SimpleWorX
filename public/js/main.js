@@ -10,6 +10,12 @@ let sortOptions = document.querySelector('#sortOptions'),
 
 toggleSwitch.addEventListener('click', switchModes);
 
+window.onbeforeunload = function () {
+    localStorage.setItem("userLoggedIn", "false");
+}
+
+checkForUser();
+
 if (darkMode === null) localStorage.setItem('darkMode', false);
 if (darkMode === 'true') {
     SAVED = true;
@@ -41,5 +47,13 @@ function switchModes() {
             sortOptions.classList.remove('sortOptionsDark');
         }
         localStorage.setItem('darkMode', false);
+    }
+}
+
+function checkForUser() {
+    if (document.querySelector('.employeeDetails')) {
+        localStorage.setItem("userLoggedIn", 'true');
+    } else {
+        localStorage.setItem("userLoggedIn", 'false');
     }
 }
