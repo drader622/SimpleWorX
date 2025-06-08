@@ -27,8 +27,8 @@
          </section>
          <ul class="workOrders">
             <% for(let i= workOrders.length - 1; i > 0; i--) {%>
-               <li>
-                  <a href="/woInfo/<%= workOrders[i]._id %>" class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : ''%> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
+               <li class="requestLi">
+                  <a href="/woInfo/<%= workOrders[i]._id %>" class='request flex darkMode <%= (workOrders[i].respondedTo === true) ? 'reqRespondedTo' : '' %> <%= (workOrders[i].status === 'closed') ? 'closed' : '' %>'>
                      <span class="woNum">WO# <%= workOrders[i].workOrderNum %></span>
                      <span><%= workOrders[i].status %></span>
                      <span><%= workOrders[i].reqDept %></span>

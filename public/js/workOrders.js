@@ -1,6 +1,7 @@
 let RELOAD = false,
-    requestLis = document.querySelectorAll('.request'),
-    sortOptionSelector = document.querySelector('#sortOptions');
+    requestLinks = document.querySelectorAll('.request'),
+    requestLis = document.querySelectorAll('.requestLi')
+sortOptionSelector = document.querySelector('#sortOptions');
 
 sortOptionSelector.addEventListener('change', sortWOList);
 
@@ -24,25 +25,32 @@ sortOptionSelector.addEventListener('change', sortWOList);
 // NON SERVER FUNCTIONALITY
 function sortWOList() {
     let sortOption = sortOptionSelector.value;
+    requestLinks.forEach(request => {
+        request.classList.remove('hidden');
+    });
     requestLis.forEach(request => {
         request.classList.remove('hidden');
     });
+    
     if (sortOption === 'open') {
-        requestLis.forEach(request => {
+        requestLinks.forEach((request, index) => {
             if (request.childNodes[3].innerHTML === 'closed') {
                 request.classList.add('hidden');
+                requestLis[index].classList.add('hidden');
             }
         });
     } else if (sortOption === 'closed') {
-        requestLis.forEach(request => {
+        requestLinks.forEach((request, index) => {
             if (request.childNodes[3].innerHTML === 'open') {
                 request.classList.add('hidden');
+                requestLis[index].classList.add('hidden');
             }
         });
     } else if (sortOption === 'responded') {
-        requestLis.forEach(request => {
+        requestLinks.forEach((request, index) => {
             if (!(request.childNodes[3].innerHTML === 'open' && request.childNodes[11].innerHTML === 'true')) {
                 request.classList.add('hidden');
+                requestLis[index].classList.add('hidden');
             }
         });
     }
